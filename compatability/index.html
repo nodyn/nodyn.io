@@ -9,8 +9,8 @@
         padding-top: 60px;
       }
     </style>
-    <link href="http://nodej.org/stylesheets/styles.css" rel="stylesheet" type="text/css">
-    <link href="http://nodej.org/stylesheets/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/styles.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet" type="text/css">
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
     <![endif]-->
@@ -34,7 +34,7 @@
               <a href="http://github.com/projectodd/nodej/wiki">Wiki</a>
             </li>
             <li>
-              <a href="http://nodej.org/compatability">Node.js API Compatability</a>
+              <a href="/compatability">Node.js API Compatability</a>
             </li>
           </ul>
         </div>
@@ -43,334 +43,311 @@
     <div class="container">
       
       <h1 id="_nodej_completion_of_the_node_js_api">NodeJ Completion of the Node.js API</h1>
-      
-      <div class="sect1">
-        <h2 id="_buffer">Buffer</h2>
-        
-        <div class="sectionbody">
-      
-        </div>
-        
+      <div class="paragraph">
+          
+        <p>The Node.js API is fairly large, and some of it is really very specific to
+      the fact that Node.js is built in C and thus dependent on system level
+      functionality. The system level addons are an obvious example of this. Since
+      NodeJ is written in Java and thus freed from the binary shackles of the
+      Operating System, so some of the stuff in Node.js just doesn&#8217;t make sense
+      in NodeJ.</p>
       </div>
-      
-      
-      <div class="sect1">
-        <h2 id="_c_c_addons">C/C++ Addons</h2>
-        
-        <div class="sectionbody">
-      
-        </div>
-        
+      <div class="paragraph">
+          
+        <p>This document is an attempt to clarify what bits of the Node.js API are
+      available in NodeJ and to identify any workarounds as necessary.</p>
       </div>
-      
-      
-      <div class="sect1">
-        <h2 id="_child_processes">Child Processes</h2>
-        
-        <div class="sectionbody">
-      
-        </div>
-        
+      <div class="paragraph">
+          
+        <p>In some cases, we&#8217;ve copied the Node.js javascript files as-is. When the Node.js
+      source is dependent only on Javascript bits, and nothing in the C bindings,
+      there&#8217;s no need to rewrite it all. In other cases, where Node.js depends on
+      C bindings, we&#8217;ve got our own spin on things with the vert.x engine or even
+      just plain old Java code.</p>
       </div>
-      
-      
-      <div class="sect1">
-        <h2 id="_cluster">Cluster</h2>
-        
-        <div class="sectionbody">
-      
-        </div>
-        
+      <div class="paragraph">
+          
+        <p>The API implementation is prioritized by the current Node.js Stability Index.
+      Features with a stability index of 2 or below are less important in most cases
+      than the more stable features.</p>
       </div>
-      
-      
-      <div class="sect1">
-        <h2 id="_crypto">Crypto</h2>
-        
-        <div class="sectionbody">
-      
-        </div>
-        
+      <div class="paragraph">
+        <div class="title">Assert</div>  
+        <p><a href="http://nodejs.org/api/assert.html">http://nodejs.org/api/assert.html</a></p>
       </div>
-      
-      
-      <div class="sect1">
-        <h2 id="_debugger">Debugger</h2>
-        
-        <div class="sectionbody">
-      
-        </div>
-        
+      <div class="paragraph">
+          
+        <p>Complete. All functions should behave as expected.  A direct copy of Node.js
+      source code.</p>
       </div>
-      
-      
-      <div class="sect1">
-        <h2 id="_dns">DNS</h2>
-        
-        <div class="sectionbody">
-      
-        </div>
-        
+      <div class="paragraph">
+        <div class="title">Buffer</div>  
+        <p><a href="http://nodejs.org/api/buffer.html">http://nodejs.org/api/buffer.html</a></p>
       </div>
-      
-      
-      <div class="sect1">
-        <h2 id="_domain">Domain</h2>
-        
-        <div class="sectionbody">
-      
-        </div>
-        
+      <div class="paragraph">
+          
+        <p>In progress (lanceball).</p>
       </div>
-      
-      
-      <div class="sect1">
-        <h2 id="_events">Events</h2>
-        
-        <div class="sectionbody">
-      
-        </div>
-        
+      <div class="paragraph">
+        <div class="title">C Addons</div>  
+        <p><a href="http://nodejs.org/api/addons.html">http://nodejs.org/api/addons.html</a></p>
       </div>
-      
-      
-      <div class="sect1">
-        <h2 id="_file_system">File System</h2>
-        
-        <div class="sectionbody">
-      
-        </div>
-        
+      <div class="paragraph">
+          
+        <p>Not applicable. Extensions to NodeJ can be written in Java, Javascript, JRuby,
+      Python or any other language supported by vert.x.</p>
       </div>
-      
-      
-      <div class="sect1">
-        <h2 id="_globals">Globals</h2>
-        
-        <div class="sectionbody">
-      
-        </div>
-        
+      <div class="paragraph">
+        <div class="title">Child Processes</div>  
+        <p><a href="http://nodejs.org/api/child_processes.html">http://nodejs.org/api/child_processes.html</a></p>
       </div>
-      
-      
-      <div class="sect1">
-        <h2 id="_http">HTTP</h2>
-        
-        <div class="sectionbody">
-      
-        </div>
-        
+      <div class="paragraph">
+          
+        <p>Not applicable. If we do implement this API, it certainly won&#8217;t actually be
+      spawning new processes.</p>
       </div>
-      
-      
-      <div class="sect1">
-        <h2 id="_https">HTTPS</h2>
-        
-        <div class="sectionbody">
-      
-        </div>
-        
+      <div class="paragraph">
+        <div class="title">Cluster</div>  
+        <p><a href="http://nodejs.org/api/cluster.html">http://nodejs.org/api/cluster.html</a></p>
       </div>
-      
-      
-      <div class="sect1">
-        <h2 id="_modules">Modules</h2>
-        
-        <div class="sectionbody">
-      
-        </div>
-        
+      <div class="paragraph">
+          
+        <p>Clustering is handled for now through vert.x builtin clustering. (Node.js
+      stability index 1)</p>
       </div>
-      
-      
-      <div class="sect1">
-        <h2 id="_net">Net</h2>
-        
-        <div class="sectionbody">
-      
-        </div>
-        
+      <div class="paragraph">
+        <div class="title">Crypto</div>  
+        <p><a href="http://nodejs.org/api/crypto.html">http://nodejs.org/api/crypto.html</a></p>
       </div>
-      
-      
-      <div class="sect1">
-        <h2 id="_os">OS</h2>
-        
-        <div class="sectionbody">
-      
-        </div>
-        
+      <div class="paragraph">
+          
+        <p>In progress (abstractj).</p>
       </div>
-      
-      
-      <div class="sect1">
-        <h2 id="_path">Path</h2>
-        
-        <div class="sectionbody">
-      
-        </div>
-        
+      <div class="paragraph">
+        <div class="title">Debugger</div>  
+        <p><a href="http://nodejs.org/api/debugger.html">http://nodejs.org/api/debugger.html</a></p>
       </div>
-      
-      
-      <div class="sect1">
-        <h2 id="_process">Process</h2>
-        
-        <div class="sectionbody">
-      
-        </div>
-        
+      <div class="paragraph">
+          
+        <p>Work not started.</p>
       </div>
-      
-      
-      <div class="sect1">
-        <h2 id="_punycode">Punycode</h2>
-        
-        <div class="sectionbody">
-      
-        </div>
-        
+      <div class="paragraph">
+        <div class="title">DNS</div>  
+        <p><a href="http://nodejs.org/api/dns.html">http://nodejs.org/api/dns.html</a></p>
       </div>
-      
-      
-      <div class="sect1">
-        <h2 id="_query_strings">Query Strings</h2>
-        
-        <div class="sectionbody">
-      
-        </div>
-        
+      <div class="paragraph">
+          
+        <p>Work not started.</p>
       </div>
-      
-      
-      <div class="sect1">
-        <h2 id="_readline">Readline</h2>
-        
-        <div class="sectionbody">
-      
-        </div>
-        
+      <div class="paragraph">
+        <div class="title">Domain</div>  
+        <p><a href="http://nodejs.org/api/domain.html">http://nodejs.org/api/domain.html</a></p>
       </div>
-      
-      
-      <div class="sect1">
-        <h2 id="_repl">REPL</h2>
-        
-        <div class="sectionbody">
-      
-        </div>
-        
+      <div class="paragraph">
+          
+        <p>Incomplete. (Node.js stability index 1)</p>
       </div>
-      
-      
-      <div class="sect1">
-        <h2 id="_stdio">STDIO</h2>
-        
-        <div class="sectionbody">
-      
-        </div>
-        
+      <div class="paragraph">
+        <div class="title">Events</div>  
+        <p><a href="http://nodejs.org/api/events.html">http://nodejs.org/api/events.html</a></p>
       </div>
-      
-      
-      <div class="sect1">
-        <h2 id="_stream">Stream</h2>
-        
-        <div class="sectionbody">
-      
-        </div>
-        
+      <div class="paragraph">
+          
+        <p>Complete. All functions should behave as expected.  A direct copy of Node.js
+      source code.</p>
       </div>
-      
-      
-      <div class="sect1">
-        <h2 id="_string_decoder">String Decoder</h2>
-        
-        <div class="sectionbody">
-      
-        </div>
-        
+      <div class="paragraph">
+        <div class="title">File System</div>  
+        <p><a href="http://nodejs.org/api/fs.html">http://nodejs.org/api/fs.html</a></p>
       </div>
-      
-      
-      <div class="sect1">
-        <h2 id="_timers">Timers</h2>
-        
-        <div class="sectionbody">
-      
-        </div>
-        
+      <div class="paragraph">
+          
+        <p>In progress (sblanc, et al).</p>
       </div>
-      
-      
-      <div class="sect1">
-        <h2 id="_tls_ssl">TLS/SSL</h2>
-        
-        <div class="sectionbody">
-      
-        </div>
-        
+      <div class="paragraph">
+        <div class="title">Globals</div>  
+        <p><a href="http://nodejs.org/api/globals.html">http://nodejs.org/api/globals.html</a></p>
       </div>
-      
-      
-      <div class="sect1">
-        <h2 id="_tty">TTY</h2>
-        
-        <div class="sectionbody">
-      
-        </div>
-        
+      <div class="paragraph">
+          
+        <p>Complete. All functions should behave as expected.</p>
       </div>
-      
-      
-      <div class="sect1">
-        <h2 id="_udp_datagram">UDP/Datagram</h2>
-        
-        <div class="sectionbody">
-      
-        </div>
-        
+      <div class="paragraph">
+        <div class="title">HTTP</div>  
+        <p><a href="http://nodejs.org/api/http.html">http://nodejs.org/api/http.html</a></p>
       </div>
-      
-      
-      <div class="sect1">
-        <h2 id="_url">URL</h2>
-        
-        <div class="sectionbody">
-      
-        </div>
-        
+      <div class="paragraph">
+          
+        <p>Complete, except for http.Agent.</p>
       </div>
-      
-      
-      <div class="sect1">
-        <h2 id="_utilities">Utilities</h2>
-        
-        <div class="sectionbody">
-      
-        </div>
-        
+      <div class="paragraph">
+        <div class="title">HTTPS</div>  
+        <p><a href="http://nodejs.org/api/https.html">http://nodejs.org/api/https.html</a></p>
       </div>
-      
-      
-      <div class="sect1">
-        <h2 id="_vm">VM</h2>
-        
-        <div class="sectionbody">
-      
-        </div>
-        
+      <div class="paragraph">
+          
+        <p>Work not started.</p>
       </div>
-      
-      
-      <div class="sect1">
-        <h2 id="_zlib">ZLIB</h2>
-        
-        <div class="sectionbody">
-      
-        </div>
-        
+      <div class="paragraph">
+        <div class="title">Modules</div>  
+        <p><a href="http://nodejs.org/api/modules.html">http://nodejs.org/api/modules.html</a></p>
+      </div>
+      <div class="paragraph">
+          
+        <p>Complete, except for project-based module loading (<a href="https://github.com/projectodd/nodej/issues/4">https://github.com/projectodd/nodej/issues/4</a>)</p>
+      </div>
+      <div class="paragraph">
+        <div class="title">Net</div>  
+        <p><a href="http://nodejs.org/api/net.html">http://nodejs.org/api/net.html</a></p>
+      </div>
+      <div class="paragraph">
+          
+        <p>Complete. All functions should behave as expected.</p>
+      </div>
+      <div class="paragraph">
+        <div class="title">OS</div>  
+        <p><a href="http://nodejs.org/api/os.html">http://nodejs.org/api/os.html</a></p>
+      </div>
+      <div class="paragraph">
+          
+        <p>Incomplete. Some functions are currently stubbed.</p>
+      </div>
+      <div class="paragraph">
+        <div class="title">Path</div>  
+        <p><a href="http://nodejs.org/api/path.html">http://nodejs.org/api/path.html</a></p>
+      </div>
+      <div class="paragraph">
+          
+        <p>Complete. All functions should behave as expected.</p>
+      </div>
+      <div class="paragraph">
+        <div class="title">Process</div>  
+        <p><a href="http://nodejs.org/api/process.html">http://nodejs.org/api/process.html</a></p>
+      </div>
+      <div class="paragraph">
+          
+        <p>Incomplete (lanceball)</p>
+      </div>
+      <div class="paragraph">
+        <div class="title">Punycode</div>  
+        <p><a href="http://nodejs.org/api/punycode.html">http://nodejs.org/api/punycode.html</a></p>
+      </div>
+      <div class="paragraph">
+          
+        <p>Complete. All functions should behave as expected.</p>
+      </div>
+      <div class="paragraph">
+        <div class="title">Query Strings</div>  
+        <p><a href="http://nodejs.org/api/querystring.html">http://nodejs.org/api/querystring.html</a></p>
+      </div>
+      <div class="paragraph">
+          
+        <p>Complete. All functions should behave as expected.</p>
+      </div>
+      <div class="paragraph">
+        <div class="title">Readline</div>  
+        <p><a href="http://nodejs.org/api/readline.html">http://nodejs.org/api/readline.html</a></p>
+      </div>
+      <div class="paragraph">
+          
+        <p>Work not started.</p>
+      </div>
+      <div class="paragraph">
+        <div class="title">REPL</div>  
+        <p><a href="http://nodejs.org/api/repl.html">http://nodejs.org/api/repl.html</a></p>
+      </div>
+      <div class="paragraph">
+          
+        <p>Work not started.</p>
+      </div>
+      <div class="paragraph">
+        <div class="title">STDIO</div>  
+        <p><a href="http://nodejs.org/api/stdio.html">http://nodejs.org/api/stdio.html</a></p>
+      </div>
+      <div class="paragraph">
+          
+        <p>Complete. All functions should behave as expected.</p>
+      </div>
+      <div class="paragraph">
+        <div class="title">Stream</div>  
+        <p><a href="http://nodejs.org/api/stream.html">http://nodejs.org/api/stream.html</a></p>
+      </div>
+      <div class="paragraph">
+          
+        <p>Complete. All functions should behave as expected.</p>
+      </div>
+      <div class="paragraph">
+        <div class="title">String Decoder</div>  
+        <p><a href="http://nodejs.org/api/string_decoder.html">http://nodejs.org/api/string_decoder.html</a></p>
+      </div>
+      <div class="paragraph">
+          
+        <p>Work not started.</p>
+      </div>
+      <div class="paragraph">
+        <div class="title">Timers</div>  
+        <p><a href="http://nodejs.org/api/timers.html">http://nodejs.org/api/timers.html</a></p>
+      </div>
+      <div class="paragraph">
+          
+        <p>Complete. All functions should behave as expected.</p>
+      </div>
+      <div class="paragraph">
+        <div class="title">TLS/SSL</div>  
+        <p><a href="http://nodejs.org/api/tls.html">http://nodejs.org/api/tls.html</a></p>
+      </div>
+      <div class="paragraph">
+          
+        <p>Work not started.</p>
+      </div>
+      <div class="paragraph">
+        <div class="title">TTY</div>  
+        <p><a href="http://nodejs.org/api/tty.html">http://nodejs.org/api/tty.html</a></p>
+      </div>
+      <div class="paragraph">
+          
+        <p>Work not started.</p>
+      </div>
+      <div class="paragraph">
+        <div class="title">UDP/Datagram</div>  
+        <p><a href="http://nodejs.org/api/dgram.html">http://nodejs.org/api/dgram.html</a></p>
+      </div>
+      <div class="paragraph">
+          
+        <p>Work not started.</p>
+      </div>
+      <div class="paragraph">
+        <div class="title">URL</div>  
+        <p><a href="http://nodejs.org/api/url.html">http://nodejs.org/api/url.html</a></p>
+      </div>
+      <div class="paragraph">
+          
+        <p>Complete. All functions should behave as expected.</p>
+      </div>
+      <div class="paragraph">
+        <div class="title">Utilities</div>  
+        <p><a href="http://nodejs.org/api/util.html">http://nodejs.org/api/util.html</a></p>
+      </div>
+      <div class="paragraph">
+          
+        <p>Complete. All functions should behave as expected. Modified copy of Node.js
+      source code.</p>
+      </div>
+      <div class="paragraph">
+        <div class="title">VM</div>  
+        <p><a href="http://nodejs.org/api/vm.html">http://nodejs.org/api/vm.html</a></p>
+      </div>
+      <div class="paragraph">
+          
+        <p>Work not started, but probably irrelevant given the platform differences.</p>
+      </div>
+      <div class="paragraph">
+        <div class="title">ZLIB</div>  
+        <p><a href="http://nodejs.org/api/vm.html">http://nodejs.org/api/vm.html</a></p>
+      </div>
+      <div class="paragraph">
+          
+        <p>Work not started, but probably irrelevant given the platform differences.</p>
       </div>
     </div>
     <div class="container">
