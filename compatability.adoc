@@ -34,7 +34,8 @@ source code.
 
 [role=api]
 === Buffer ===
-http://nodejs.org/api/buffer.html
+- Node.js reference http://nodejs.org/api/buffer.html
+- NodeJ status details http://nodej.org/api/buffer
 
 In progress (lanceball).
 
