@@ -3,7 +3,7 @@ Lance Ball <lball@redhat.com>
 2013-04-15
 :awestruct-layout: base
 
-= NodeJ Completion of the Node.js API =
+== NodeJ Completion of the Node.js API ==
 
 The Node.js API is fairly large, and some of it is really very specific to
 the fact that Node.js is built in C and thus dependent on system level 
@@ -21,182 +21,216 @@ there's no need to rewrite it all. In other cases, where Node.js depends on
 C bindings, we've got our own spin on things with the vert.x engine or even
 just plain old Java code.
 
-The API implementation is prioritized by the current Node.js Stability Index.
-Features with a stability index of 2 or below are less important in most cases
-than the more stable features.
+Work on the API implementation is prioritized by the current Node.js Stability
+Index.  Features with a stability index of 2 or below are less important in
+most cases than the more stable features.
 
-.Assert
+[role=api]
+=== Assert ===
 http://nodejs.org/api/assert.html
 
 Complete. All functions should behave as expected.  A direct copy of Node.js
 source code.
 
-.Buffer
+[role=api]
+=== Buffer ===
 http://nodejs.org/api/buffer.html
 
 In progress (lanceball).
 
-.C Addons
+[role=api]
+=== C Addons ===
 http://nodejs.org/api/addons.html
 
 Not applicable. Extensions to NodeJ can be written in Java, Javascript, JRuby,
 Python or any other language supported by vert.x.
 
-.Child Processes
+[role=api]
+=== Child Processes ===
 http://nodejs.org/api/child_processes.html
 
 Not applicable. If we do implement this API, it certainly won't actually be
 spawning new processes.
 
-.Cluster
+[role=api]
+=== Cluster ===
 http://nodejs.org/api/cluster.html
 
 Clustering is handled for now through vert.x builtin clustering. (Node.js
 stability index 1)
 
-.Crypto
+[role=api]
+=== Crypto ===
 http://nodejs.org/api/crypto.html
 
 In progress (abstractj).
 
-.Debugger
+[role=api]
+=== Debugger ===
 http://nodejs.org/api/debugger.html
 
 Work not started.
 
-.DNS
+[role=api]
+=== DNS ===
 http://nodejs.org/api/dns.html
 
 Work not started.
 
-.Domain
+[role=api]
+=== Domain ===
 http://nodejs.org/api/domain.html
 
 Incomplete. (Node.js stability index 1)
 
-.Events
+[role=api]
+=== Events ===
 http://nodejs.org/api/events.html
 
 Complete. All functions should behave as expected.  A direct copy of Node.js
 source code.
 
-.File System
+[role=api]
+=== File System ===
 http://nodejs.org/api/fs.html
 
 In progress (sblanc, et al).
 
-.Globals
+[role=api]
+=== Globals ===
 http://nodejs.org/api/globals.html
 
 Complete. All functions should behave as expected.  
 
-.HTTP
+[role=api]
+=== HTTP ===
 http://nodejs.org/api/http.html
 
 Complete, except for http.Agent.
 
-.HTTPS
+[role=api]
+=== HTTPS ===
 http://nodejs.org/api/https.html
 
 Work not started.
 
-.Modules
+[role=api]
+=== Modules ===
 http://nodejs.org/api/modules.html
 
 Complete, except for project-based module loading (https://github.com/projectodd/nodej/issues/4)
 
-.Net
+[role=api]
+=== Net ===
 http://nodejs.org/api/net.html
 
 Complete. All functions should behave as expected.  
 
-.OS
+[role=api]
+=== OS ===
 http://nodejs.org/api/os.html
 
 Incomplete. Some functions are currently stubbed.
 
-.Path
+[role=api]
+=== Path ===
 http://nodejs.org/api/path.html
 
 Complete. All functions should behave as expected.
 
-.Process
+[role=api]
+=== Process ===
 http://nodejs.org/api/process.html
 
 Incomplete (lanceball)
 
-.Punycode
+[role=api]
+=== Punycode ===
 http://nodejs.org/api/punycode.html
 
 Complete. All functions should behave as expected.
 
-.Query Strings
+[role=api]
+=== Query Strings ===
 http://nodejs.org/api/querystring.html
 
 Complete. All functions should behave as expected.
 
-.Readline
+[role=api]
+=== Readline ===
 http://nodejs.org/api/readline.html
 
 Work not started.
 
-.REPL
+[role=api]
+=== REPL ===
 http://nodejs.org/api/repl.html
 
 Work not started.
 
-.STDIO
+[role=api]
+=== STDIO ===
 http://nodejs.org/api/stdio.html
 
 Complete. All functions should behave as expected.
 
-.Stream
+[role=api]
+=== Stream ===
 http://nodejs.org/api/stream.html
 
 Complete. All functions should behave as expected.
 
-.String Decoder
+[role=api]
+=== String Decoder ===
 http://nodejs.org/api/string_decoder.html
 
 Work not started.
 
-.Timers
+[role=api]
+=== Timers ===
 http://nodejs.org/api/timers.html
 
 Complete. All functions should behave as expected.
 
-.TLS/SSL
+[role=api]
+=== TLS/SSL ===
 http://nodejs.org/api/tls.html
 
 Work not started.
 
-.TTY
+[role=api]
+=== TTY ===
 http://nodejs.org/api/tty.html
 
 Work not started.
 
-.UDP/Datagram
+[role=api]
+=== UDP/Datagram ===
 http://nodejs.org/api/dgram.html
 
 Work not started.
 
-.URL
+[role=api]
+=== URL ===
 http://nodejs.org/api/url.html
 
 Complete. All functions should behave as expected.
 
-.Utilities
+[role=api]
+=== Utilities ===
 http://nodejs.org/api/util.html
 
 Complete. All functions should behave as expected. Modified copy of Node.js
 source code.
 
-.VM
+[role=api]
+=== VM ===
 http://nodejs.org/api/vm.html
 
 Work not started, but probably irrelevant given the platform differences.
 
-.ZLIB
+[role=api]
+=== ZLIB ===
 http://nodejs.org/api/vm.html
 
 Work not started, but probably irrelevant given the platform differences.

@@ -5,12 +5,13 @@
 // @import "bootstrap-responsive";
 
 body {
-  .paragraph {
-    .title {
-      font-family: "Josefin Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
-      font-size: 18.5px;
-      font-weight: bold;
-      margin-top: 20px;
+  div.sect2.api {
+    h3 {
+      font-size: 20px;
+      line-height: 30px;
     }
+    margin-bottom: 20px;
+    border-top: 1px solid #ddd;
   }
+
 }
