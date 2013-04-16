@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>NodeJ: Node.JS for the JVM</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <style>
+      body {
+        padding-top: 60px;
+      }
+    </style>
+    <link href="http://nodej.org/stylesheets/styles.css" rel="stylesheet" type="text/css">
+    <link href="http://nodej.org/stylesheets/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <ul class="nav">
+            <li>
+              <a class="brand" href="/">NodeJ</a>
+            </li>
+            <li>
+              <a href="http://github.com/projectodd/nodej">Source</a>
+            </li>
+            <li>
+              <a href="http://github.com/projectodd/nodej/issues">Issues</a>
+            </li>
+            <li>
+              <a href="http://github.com/projectodd/nodej/wiki">Wiki</a>
+            </li>
+            <li>
+              <a href="http://nodej.org/compatability">Node.js API Compatability</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      
+      <div class="sect1">
+        <h2 id="_status_of_the_node_js_buffer_api">Status of the Node.js Buffer API</h2>
+        
+        <div class="sectionbody">
+      
+      <div class="dlist api">
+        
+        <dl>
+          
+          <dt class="hdlist1">
+            Class: Buffer
+          </dt>
+          
+          <dd>
+            
+            
+      <div class="ulist">
+        
+        <ul>
+        
+          <li>
+            <p>new Buffer(size) <strong>Complete</strong></p>
+            
+          </li>
+        
+          <li>
+            <p>new Buffer(array) <strong>Complete</strong></p>
+            
+          </li>
+        
+          <li>
+            <p>new Buffer(str, [encoding]) <strong>Complete</strong></p>
+            
+          </li>
+        
+          <li>
+            <p>Class Method: Buffer.isEncoding(encoding)</p>
+            
+          </li>
+        
+          <li>
+            <p>buf.write(string, [offset], [length], [encoding]) <strong>Complete</strong></p>
+            
+          </li>
+        
+          <li>
+            <p>buf.toString([encoding], [start], [end])</p>
+            
+          </li>
+        
+          <li>
+            <p>buf.toJSON()</p>
+            
+          </li>
+        
+          <li>
+            <p>buf[index] <strong>Complete</strong></p>
+            
+          </li>
+        
+          <li>
+            <p>Class Method: Buffer.isBuffer(obj)</p>
+            
+          </li>
+        
+          <li>
+            <p>Class Method: Buffer.byteLength(string, [encoding]) <strong>Complete</strong></p>
+            
+          </li>
+        
+          <li>
+            <p>Class Method: Buffer.concat(list, [totalLength])</p>
+            
+          </li>
+        
+          <li>
+            <p>buf.length <strong>Complete</strong></p>
+            
+          </li>
+        
+          <li>
+            <p>buf.copy(targetBuffer, [targetStart], [sourceStart], [sourceEnd]) <strong>Complete</strong></p>
+            
+          </li>
+        
+          <li>
+            <p>buf.slice([start], [end])</p>
+            
+          </li>
+        
+          <li>
+            <p>buf.readUInt8(offset, [noAssert])</p>
+            
+          </li>
+        
+          <li>
+            <p>buf.readUInt16LE(offset, [noAssert])</p>
+            
+          </li>
+        
+          <li>
+            <p>buf.readUInt16BE(offset, [noAssert])</p>
+            
+          </li>
+        
+          <li>
+            <p>buf.readUInt32LE(offset, [noAssert])</p>
+            
+          </li>
+        
+          <li>
+            <p>buf.readUInt32BE(offset, [noAssert])</p>
+            
+          </li>
+        
+          <li>
+            <p>buf.readInt8(offset, [noAssert])</p>
+            
+          </li>
+        
+          <li>
+            <p>buf.readInt16LE(offset, [noAssert])</p>
+            
+          </li>
+        
+          <li>
+            <p>buf.readInt16BE(offset, [noAssert])</p>
+            
+          </li>
+        
+          <li>
+            <p>buf.readInt32LE(offset, [noAssert])</p>
+            
+          </li>
+        
+          <li>
+            <p>buf.readInt32BE(offset, [noAssert])</p>
+            
+          </li>
+        
+          <li>
+            <p>buf.readFloatLE(offset, [noAssert])</p>
+            
+          </li>
+        
+          <li>
+            <p>buf.readFloatBE(offset, [noAssert])</p>
+            
+          </li>
+        
+          <li>
+            <p>buf.readDoubleLE(offset, [noAssert])</p>
+            
+          </li>
+        
+          <li>
+            <p>buf.readDoubleBE(offset, [noAssert])</p>
+            
+          </li>
+        
+          <li>
+            <p>buf.writeUInt8(value, offset, [noAssert])</p>
+            
+          </li>
+        
+          <li>
+            <p>buf.writeUInt16LE(value, offset, [noAssert])</p>
+            
+          </li>
+        
+          <li>
+            <p>buf.writeUInt16BE(value, offset, [noAssert])</p>
+            
+          </li>
+        
+          <li>
+            <p>buf.writeUInt32LE(value, offset, [noAssert])</p>
+            
+          </li>
+        
+          <li>
+            <p>buf.writeUInt32BE(value, offset, [noAssert])</p>
+            
+          </li>
+        
+          <li>
+            <p>buf.writeInt8(value, offset, [noAssert])</p>
+            
+          </li>
+        
+          <li>
+            <p>buf.writeInt16LE(value, offset, [noAssert])</p>
+            
+          </li>
+        
+          <li>
+            <p>buf.writeInt16BE(value, offset, [noAssert])</p>
+            
+          </li>
+        
+          <li>
+            <p>buf.writeInt32LE(value, offset, [noAssert])</p>
+            
+          </li>
+        
+          <li>
+            <p>buf.writeInt32BE(value, offset, [noAssert])</p>
+            
+          </li>
+        
+          <li>
+            <p>buf.writeFloatLE(value, offset, [noAssert])</p>
+            
+          </li>
+        
+          <li>
+            <p>buf.writeFloatBE(value, offset, [noAssert])</p>
+            
+          </li>
+        
+          <li>
+            <p>buf.writeDoubleLE(value, offset, [noAssert])</p>
+            
+          </li>
+        
+          <li>
+            <p>buf.writeDoubleBE(value, offset, [noAssert])</p>
+            
+          </li>
+        
+          <li>
+            <p>buf.fill(value, [offset], [end]) <strong>Complete</strong></p>
+            
+          </li>
+        
+          <li>
+            <p>buffer.INSPECT_MAX_BYTES</p>
+            
+          </li>
+        
+        </ul>
+      </div>
+      
+            
+          </dd>
+          
+          
+          <dt class="hdlist1">
+            Class: SlowBuffer
+          </dt>
+          
+          <dd>
+            
+            
+      <div class="ulist">
+        
+        <ul>
+        
+          <li>
+            <p><strong>Complete</strong></p>
+            
+          </li>
+        
+        </ul>
+      </div>
+      
+            
+          </dd>
+          
+          
+        </dl>
+      </div>
+      
+      
+        </div>
+        
+      </div>
+    </div>
+    <div class="container">
+      <div class="well">
+        CI Build Status
+        <p>
+          <a href="http://travis-ci.org/projectodd/nodej">
+            <img alt="Travis-CI Build Status" src="https://secure.travis-ci.org/projectodd/nodej.png">
+          </a>
+          <a href="https://buildhive.cloudbees.com/job/projectodd/job/nodej/">
+            <img alt="Cloudbees CI Build Status" src="https://buildhive.cloudbees.com/job/projectodd/job/nodej/badge/icon">
+          </a>
+        </p>
+      </div>
+      <hr>
+      <footer>
+        <p>&copy; Project Odd 2013</p>
+      </footer>
+    </div>
+  </body>
+</html>
