@@ -1,0 +1,56 @@
+= Buffer
+Lance Ball <lball@redhat.com>
+2013-04-15
+:awestruct-layout: base
+
+== Status of the Node.js Buffer API ==
+
+[role = api]
+Class: Buffer::
+  * new Buffer(size) *Complete*
+  * new Buffer(array) *Complete*
+  * new Buffer(str, [encoding]) *Complete*
+  * Class Method: Buffer.isEncoding(encoding)
+  * buf.write(string, [offset], [length], [encoding]) *Complete*
+  * buf.toString([encoding], [start], [end]) 
+  * buf.toJSON()
+  * buf[index] *Complete*
+  * Class Method: Buffer.isBuffer(obj)
+  * Class Method: Buffer.byteLength(string, [encoding]) *Complete*
+  * Class Method: Buffer.concat(list, [totalLength])
+  * buf.length *Complete*
+  * buf.copy(targetBuffer, [targetStart], [sourceStart], [sourceEnd]) *Complete*
+  * buf.slice([start], [end])
+  * buf.readUInt8(offset, [noAssert])
+  * buf.readUInt16LE(offset, [noAssert])
+  * buf.readUInt16BE(offset, [noAssert])
+  * buf.readUInt32LE(offset, [noAssert])
+  * buf.readUInt32BE(offset, [noAssert])
+  * buf.readInt8(offset, [noAssert])
+  * buf.readInt16LE(offset, [noAssert])
+  * buf.readInt16BE(offset, [noAssert])
+  * buf.readInt32LE(offset, [noAssert])
+  * buf.readInt32BE(offset, [noAssert])
+  * buf.readFloatLE(offset, [noAssert])
+  * buf.readFloatBE(offset, [noAssert])
+  * buf.readDoubleLE(offset, [noAssert])
+  * buf.readDoubleBE(offset, [noAssert])
+  * buf.writeUInt8(value, offset, [noAssert])
+  * buf.writeUInt16LE(value, offset, [noAssert])
+  * buf.writeUInt16BE(value, offset, [noAssert])
+  * buf.writeUInt32LE(value, offset, [noAssert])
+  * buf.writeUInt32BE(value, offset, [noAssert])
+  * buf.writeInt8(value, offset, [noAssert])
+  * buf.writeInt16LE(value, offset, [noAssert])
+  * buf.writeInt16BE(value, offset, [noAssert])
+  * buf.writeInt32LE(value, offset, [noAssert])
+  * buf.writeInt32BE(value, offset, [noAssert])
+  * buf.writeFloatLE(value, offset, [noAssert])
+  * buf.writeFloatBE(value, offset, [noAssert])
+  * buf.writeDoubleLE(value, offset, [noAssert])
+  * buf.writeDoubleBE(value, offset, [noAssert])
+  * buf.fill(value, [offset], [end]) *Complete*
+  * buffer.INSPECT_MAX_BYTES
+
+Class: SlowBuffer::
+  * *Complete*
