@@ -5,69 +5,199 @@ Lance Ball <lball@redhat.com>
 
 = NodeJ Completion of the Node.js API =
 
-== Buffer ==
+The Node.js API is fairly large, and some of it is really very specific to
+the fact that Node.js is built in C and thus dependent on system level 
+functionality. The system level addons are an obvious example of this. Since
+NodeJ is written in Java and thus freed from the binary shackles of the
+Operating System, so some of the stuff in Node.js just doesn't make sense
+in NodeJ.
 
-== C/C++ Addons ==
+This document is an attempt to clarify what bits of the Node.js API are
+available in NodeJ and to identify any workarounds as necessary.
 
-== Child Processes ==
+In some cases, we've copied the Node.js javascript files as-is. When the Node.js
+source is dependent only on Javascript bits, and nothing in the C bindings,
+there's no need to rewrite it all. In other cases, where Node.js depends on
+C bindings, we've got our own spin on things with the vert.x engine or even
+just plain old Java code.
 
-== Cluster ==
+The API implementation is prioritized by the current Node.js Stability Index.
+Features with a stability index of 2 or below are less important in most cases
+than the more stable features.
 
-== Crypto ==
+.Assert
+http://nodejs.org/api/assert.html
 
-== Debugger ==
+Complete. All functions should behave as expected.  A direct copy of Node.js
+source code.
 
-== DNS ==
+.Buffer
+http://nodejs.org/api/buffer.html
 
-== Domain ==
+In progress (lanceball).
 
-== Events ==
+.C Addons
+http://nodejs.org/api/addons.html
 
-== File System ==
+Not applicable. Extensions to NodeJ can be written in Java, Javascript, JRuby,
+Python or any other language supported by vert.x.
 
-== Globals ==
+.Child Processes
+http://nodejs.org/api/child_processes.html
 
-== HTTP ==
+Not applicable. If we do implement this API, it certainly won't actually be
+spawning new processes.
 
-== HTTPS ==
+.Cluster
+http://nodejs.org/api/cluster.html
 
-== Modules ==
+Clustering is handled for now through vert.x builtin clustering. (Node.js
+stability index 1)
 
-== Net ==
+.Crypto
+http://nodejs.org/api/crypto.html
 
-== OS ==
+In progress (abstractj).
 
-== Path ==
+.Debugger
+http://nodejs.org/api/debugger.html
 
-== Process ==
+Work not started.
 
-== Punycode ==
+.DNS
+http://nodejs.org/api/dns.html
 
-== Query Strings ==
+Work not started.
 
-== Readline ==
+.Domain
+http://nodejs.org/api/domain.html
 
-== REPL ==
+Incomplete. (Node.js stability index 1)
 
-== STDIO ==
+.Events
+http://nodejs.org/api/events.html
 
-== Stream ==
+Complete. All functions should behave as expected.  A direct copy of Node.js
+source code.
 
-== String Decoder ==
+.File System
+http://nodejs.org/api/fs.html
 
-== Timers ==
+In progress (sblanc, et al).
 
-== TLS/SSL ==
+.Globals
+http://nodejs.org/api/globals.html
 
-== TTY ==
+Complete. All functions should behave as expected.  
 
-== UDP/Datagram ==
+.HTTP
+http://nodejs.org/api/http.html
 
-== URL ==
+Complete, except for http.Agent.
 
-== Utilities ==
+.HTTPS
+http://nodejs.org/api/https.html
 
-== VM ==
+Work not started.
 
-== ZLIB ==
+.Modules
+http://nodejs.org/api/modules.html
+
+Complete, except for project-based module loading (https://github.com/projectodd/nodej/issues/4)
+
+.Net
+http://nodejs.org/api/net.html
+
+Complete. All functions should behave as expected.  
+
+.OS
+http://nodejs.org/api/os.html
+
+Incomplete. Some functions are currently stubbed.
+
+.Path
+http://nodejs.org/api/path.html
+
+Complete. All functions should behave as expected.
+
+.Process
+http://nodejs.org/api/process.html
+
+Incomplete (lanceball)
+
+.Punycode
+http://nodejs.org/api/punycode.html
+
+Complete. All functions should behave as expected.
+
+.Query Strings
+http://nodejs.org/api/querystring.html
+
+Complete. All functions should behave as expected.
+
+.Readline
+http://nodejs.org/api/readline.html
+
+Work not started.
+
+.REPL
+http://nodejs.org/api/repl.html
+
+Work not started.
+
+.STDIO
+http://nodejs.org/api/stdio.html
+
+Complete. All functions should behave as expected.
+
+.Stream
+http://nodejs.org/api/stream.html
+
+Complete. All functions should behave as expected.
+
+.String Decoder
+http://nodejs.org/api/string_decoder.html
+
+Work not started.
+
+.Timers
+http://nodejs.org/api/timers.html
+
+Complete. All functions should behave as expected.
+
+.TLS/SSL
+http://nodejs.org/api/tls.html
+
+Work not started.
+
+.TTY
+http://nodejs.org/api/tty.html
+
+Work not started.
+
+.UDP/Datagram
+http://nodejs.org/api/dgram.html
+
+Work not started.
+
+.URL
+http://nodejs.org/api/url.html
+
+Complete. All functions should behave as expected.
+
+.Utilities
+http://nodejs.org/api/util.html
+
+Complete. All functions should behave as expected. Modified copy of Node.js
+source code.
+
+.VM
+http://nodejs.org/api/vm.html
+
+Work not started, but probably irrelevant given the platform differences.
+
+.ZLIB
+http://nodejs.org/api/vm.html
+
+Work not started, but probably irrelevant given the platform differences.
 
