@@ -9,7 +9,7 @@ The Node.js API is fairly large, and some of it is really very specific to
 the fact that Node.js is built in C and thus dependent on system level 
 functionality. The system level addons are an obvious example of this. Since
 NodeJ is written in Java and thus freed from the binary shackles of the
-Operating System, so some of the stuff in Node.js just doesn't make sense
+Operating System, some of the stuff in Node.js just doesn't make sense
 in NodeJ.
 
 This document is an attempt to clarify what bits of the Node.js API are
