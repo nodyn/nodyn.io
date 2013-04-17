@@ -1,4 +1,4 @@
-= Node.js API Compatability
+= Node.js API Compatibility
 Lance Ball <lball@redhat.com>
 2013-04-15
 :awestruct-layout: base
