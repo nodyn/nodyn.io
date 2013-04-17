@@ -27,7 +27,7 @@ most cases than the more stable features.
 
 [role=api]
 === Assert ===
-http://nodejs.org/api/assert.html
+- Node.js reference http://nodejs.org/api/assert.html
 
 Complete. All functions should behave as expected.  A direct copy of Node.js
 source code.
@@ -41,192 +41,192 @@ In progress (lanceball).
 
 [role=api]
 === C Addons ===
-http://nodejs.org/api/addons.html
+- Node.js reference http://nodejs.org/api/addons.html
 
 Not applicable. Extensions to NodeJ can be written in Java, Javascript, JRuby,
 Python or any other language supported by vert.x.
 
 [role=api]
 === Child Processes ===
-http://nodejs.org/api/child_processes.html
+- Node.js reference http://nodejs.org/api/child_processes.html
 
 Not applicable. If we do implement this API, it certainly won't actually be
 spawning new processes.
 
 [role=api]
 === Cluster ===
-http://nodejs.org/api/cluster.html
+- Node.js reference http://nodejs.org/api/cluster.html
 
 Clustering is handled for now through vert.x builtin clustering. (Node.js
 stability index 1)
 
 [role=api]
 === Crypto ===
-http://nodejs.org/api/crypto.html
+- Node.js reference http://nodejs.org/api/crypto.html
 
 In progress (abstractj).
 
 [role=api]
 === Debugger ===
-http://nodejs.org/api/debugger.html
+- Node.js reference http://nodejs.org/api/debugger.html
 
 Work not started.
 
 [role=api]
 === DNS ===
-http://nodejs.org/api/dns.html
+- Node.js reference http://nodejs.org/api/dns.html
 
 Work not started.
 
 [role=api]
 === Domain ===
-http://nodejs.org/api/domain.html
+- Node.js reference http://nodejs.org/api/domain.html
 
 Incomplete. (Node.js stability index 1)
 
 [role=api]
 === Events ===
-http://nodejs.org/api/events.html
+- Node.js reference http://nodejs.org/api/events.html
 
 Complete. All functions should behave as expected.  A direct copy of Node.js
 source code.
 
 [role=api]
 === File System ===
-http://nodejs.org/api/fs.html
+- Node.js reference http://nodejs.org/api/fs.html
 
 In progress (sblanc, et al).
 
 [role=api]
 === Globals ===
-http://nodejs.org/api/globals.html
+- Node.js reference http://nodejs.org/api/globals.html
 
 Complete. All functions should behave as expected.  
 
 [role=api]
 === HTTP ===
-http://nodejs.org/api/http.html
+- Node.js reference http://nodejs.org/api/http.html
 
 Complete, except for http.Agent.
 
 [role=api]
 === HTTPS ===
-http://nodejs.org/api/https.html
+- Node.js reference http://nodejs.org/api/https.html
 
 Work not started.
 
 [role=api]
 === Modules ===
-http://nodejs.org/api/modules.html
+- Node.js reference http://nodejs.org/api/modules.html
 
 Complete, except for project-based module loading (https://github.com/projectodd/nodej/issues/4)
 
 [role=api]
 === Net ===
-http://nodejs.org/api/net.html
+- Node.js reference http://nodejs.org/api/net.html
 
 Complete. All functions should behave as expected.  
 
 [role=api]
 === OS ===
-http://nodejs.org/api/os.html
+- Node.js reference http://nodejs.org/api/os.html
 
 Incomplete. Some functions are currently stubbed.
 
 [role=api]
 === Path ===
-http://nodejs.org/api/path.html
+- Node.js reference http://nodejs.org/api/path.html
 
 Complete. All functions should behave as expected.
 
 [role=api]
 === Process ===
-http://nodejs.org/api/process.html
+- Node.js reference http://nodejs.org/api/process.html
 
 Incomplete (lanceball)
 
 [role=api]
 === Punycode ===
-http://nodejs.org/api/punycode.html
+- Node.js reference http://nodejs.org/api/punycode.html
 
 Complete. All functions should behave as expected.
 
 [role=api]
 === Query Strings ===
-http://nodejs.org/api/querystring.html
+- Node.js reference http://nodejs.org/api/querystring.html
 
 Complete. All functions should behave as expected.
 
 [role=api]
 === Readline ===
-http://nodejs.org/api/readline.html
+- Node.js reference http://nodejs.org/api/readline.html
 
 Work not started.
 
 [role=api]
 === REPL ===
-http://nodejs.org/api/repl.html
+- Node.js reference http://nodejs.org/api/repl.html
 
 Work not started.
 
 [role=api]
 === STDIO ===
-http://nodejs.org/api/stdio.html
+- Node.js reference http://nodejs.org/api/stdio.html
 
 Complete. All functions should behave as expected.
 
 [role=api]
 === Stream ===
-http://nodejs.org/api/stream.html
+- Node.js reference http://nodejs.org/api/stream.html
 
 Complete. All functions should behave as expected.
 
 [role=api]
 === String Decoder ===
-http://nodejs.org/api/string_decoder.html
+- Node.js reference http://nodejs.org/api/string_decoder.html
 
 Work not started.
 
 [role=api]
 === Timers ===
-http://nodejs.org/api/timers.html
+- Node.js reference http://nodejs.org/api/timers.html
 
 Complete. All functions should behave as expected.
 
 [role=api]
 === TLS/SSL ===
-http://nodejs.org/api/tls.html
+- Node.js reference http://nodejs.org/api/tls.html
 
 Work not started.
 
 [role=api]
 === TTY ===
-http://nodejs.org/api/tty.html
+- Node.js reference http://nodejs.org/api/tty.html
 
 Work not started.
 
 [role=api]
 === UDP/Datagram ===
-http://nodejs.org/api/dgram.html
+- Node.js reference http://nodejs.org/api/dgram.html
 
 Work not started.
 
 [role=api]
 === URL ===
-http://nodejs.org/api/url.html
+- Node.js reference http://nodejs.org/api/url.html
 
 Complete. All functions should behave as expected.
 
 [role=api]
 === Utilities ===
-http://nodejs.org/api/util.html
+- Node.js reference http://nodejs.org/api/util.html
 
 Complete. All functions should behave as expected. Modified copy of Node.js
 source code.
 
 [role=api]
 === VM ===
-http://nodejs.org/api/vm.html
+- Node.js reference http://nodejs.org/api/vm.html
 
 Work not started, but probably irrelevant given the platform differences.
 
