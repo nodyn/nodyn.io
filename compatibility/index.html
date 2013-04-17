@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>NodeJ: Node.JS for the JVM</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <style>
+      body {
+        padding-top: 60px;
+      }
+    </style>
+    <link href="http://nodej.org/stylesheets/styles.css" rel="stylesheet" type="text/css">
+    <link href="http://nodej.org/stylesheets/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <ul class="nav">
+            <li>
+              <a class="brand" href="/">NodeJ</a>
+            </li>
+            <li>
+              <a href="http://github.com/projectodd/nodej">Source</a>
+            </li>
+            <li>
+              <a href="http://github.com/projectodd/nodej/issues">Issues</a>
+            </li>
+            <li>
+              <a href="http://github.com/projectodd/nodej/wiki">Wiki</a>
+            </li>
+            <li>
+              <a href="http://nodej.org/compatibility">Node.js API Compatibility</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      
+      <div class="sect1">
+        <h2 id="_nodej_completion_of_the_node_js_api">NodeJ Completion of the Node.js API</h2>
+        
+        <div class="sectionbody">
+      <div class="paragraph">
+          
+        <p>The Node.js API is fairly large, and some of it is really very specific to
+      the fact that Node.js is built in C and thus dependent on system level
+      functionality. The system level addons are an obvious example of this. Since
+      NodeJ is written in Java and thus freed from the binary shackles of the
+      Operating System, some of the stuff in Node.js just doesn&#8217;t make sense
+      in NodeJ.</p>
+      </div>
+      <div class="paragraph">
+          
+        <p>This document is an attempt to clarify what bits of the Node.js API are
+      available in NodeJ and to identify any workarounds as necessary.</p>
+      </div>
+      <div class="paragraph">
+          
+        <p>In some cases, we&#8217;ve copied the Node.js javascript files as-is. When the Node.js
+      source is dependent only on Javascript bits, and nothing in the C bindings,
+      there&#8217;s no need to rewrite it all. In other cases, where Node.js depends on
+      C bindings, we&#8217;ve got our own spin on things with the vert.x engine or even
+      just plain old Java code.</p>
+      </div>
+      <div class="paragraph">
+          
+        <p>Work on the API implementation is prioritized by the current Node.js Stability
+      Index.  Features with a stability index of 2 or below are less important in
+      most cases than the more stable features.</p>
+      </div>
+      
+      <div class="sect2 api">
+        <h3 id="_assert">Assert</h3>
+        
+      <div class="ulist">
+        
+        <ul>
+        
+          <li>
+            <p>Node.js reference <a href="http://nodejs.org/api/assert.html">http://nodejs.org/api/assert.html</a></p>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div class="paragraph">
+          
+        <p>Complete. All functions should behave as expected.  A direct copy of Node.js
+      source code.</p>
+      </div>
+      
+        
+      </div>
+      
+      
+      <div class="sect2 api">
+        <h3 id="_buffer">Buffer</h3>
+        
+      <div class="ulist">
+        
+        <ul>
+        
+          <li>
+            <p>Node.js reference <a href="http://nodejs.org/api/buffer.html">http://nodejs.org/api/buffer.html</a></p>
+            
+          </li>
+        
+          <li>
+            <p>NodeJ status details <a href="http://nodej.org/api/buffer">http://nodej.org/api/buffer</a></p>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div class="paragraph">
+          
+        <p>In progress (lanceball).</p>
+      </div>
+      
+        
+      </div>
+      
+      
+      <div class="sect2 api">
+        <h3 id="_c_addons">C Addons</h3>
+        
+      <div class="ulist">
+        
+        <ul>
+        
+          <li>
+            <p>Node.js reference <a href="http://nodejs.org/api/addons.html">http://nodejs.org/api/addons.html</a></p>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div class="paragraph">
+          
+        <p>Not applicable. Extensions to NodeJ can be written in Java, Javascript, JRuby,
+      Python or any other language supported by vert.x.</p>
+      </div>
+      
+        
+      </div>
+      
+      
+      <div class="sect2 api">
+        <h3 id="_child_processes">Child Processes</h3>
+        
+      <div class="ulist">
+        
+        <ul>
+        
+          <li>
+            <p>Node.js reference <a href="http://nodejs.org/api/child_processes.html">http://nodejs.org/api/child_processes.html</a></p>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div class="paragraph">
+          
+        <p>Not applicable. If we do implement this API, it certainly won&#8217;t actually be
+      spawning new processes.</p>
+      </div>
+      
+        
+      </div>
+      
+      
+      <div class="sect2 api">
+        <h3 id="_cluster">Cluster</h3>
+        
+      <div class="ulist">
+        
+        <ul>
+        
+          <li>
+            <p>Node.js reference <a href="http://nodejs.org/api/cluster.html">http://nodejs.org/api/cluster.html</a></p>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div class="paragraph">
+          
+        <p>Clustering is handled for now through vert.x builtin clustering. (Node.js
+      stability index 1)</p>
+      </div>
+      
+        
+      </div>
+      
+      
+      <div class="sect2 api">
+        <h3 id="_crypto">Crypto</h3>
+        
+      <div class="ulist">
+        
+        <ul>
+        
+          <li>
+            <p>Node.js reference <a href="http://nodejs.org/api/crypto.html">http://nodejs.org/api/crypto.html</a></p>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div class="paragraph">
+          
+        <p>In progress (abstractj).</p>
+      </div>
+      
+        
+      </div>
+      
+      
+      <div class="sect2 api">
+        <h3 id="_debugger">Debugger</h3>
+        
+      <div class="ulist">
+        
+        <ul>
+        
+          <li>
+            <p>Node.js reference <a href="http://nodejs.org/api/debugger.html">http://nodejs.org/api/debugger.html</a></p>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div class="paragraph">
+          
+        <p>Work not started.</p>
+      </div>
+      
+        
+      </div>
+      
+      
+      <div class="sect2 api">
+        <h3 id="_dns">DNS</h3>
+        
+      <div class="ulist">
+        
+        <ul>
+        
+          <li>
+            <p>Node.js reference <a href="http://nodejs.org/api/dns.html">http://nodejs.org/api/dns.html</a></p>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div class="paragraph">
+          
+        <p>Work not started.</p>
+      </div>
+      
+        
+      </div>
+      
+      
+      <div class="sect2 api">
+        <h3 id="_domain">Domain</h3>
+        
+      <div class="ulist">
+        
+        <ul>
+        
+          <li>
+            <p>Node.js reference <a href="http://nodejs.org/api/domain.html">http://nodejs.org/api/domain.html</a></p>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div class="paragraph">
+          
+        <p>Incomplete. (Node.js stability index 1)</p>
+      </div>
+      
+        
+      </div>
+      
+      
+      <div class="sect2 api">
+        <h3 id="_events">Events</h3>
+        
+      <div class="ulist">
+        
+        <ul>
+        
+          <li>
+            <p>Node.js reference <a href="http://nodejs.org/api/events.html">http://nodejs.org/api/events.html</a></p>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div class="paragraph">
+          
+        <p>Complete. All functions should behave as expected.  A direct copy of Node.js
+      source code.</p>
+      </div>
+      
+        
+      </div>
+      
+      
+      <div class="sect2 api">
+        <h3 id="_file_system">File System</h3>
+        
+      <div class="ulist">
+        
+        <ul>
+        
+          <li>
+            <p>Node.js reference <a href="http://nodejs.org/api/fs.html">http://nodejs.org/api/fs.html</a></p>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div class="paragraph">
+          
+        <p>In progress (sblanc, et al).</p>
+      </div>
+      
+        
+      </div>
+      
+      
+      <div class="sect2 api">
+        <h3 id="_globals">Globals</h3>
+        
+      <div class="ulist">
+        
+        <ul>
+        
+          <li>
+            <p>Node.js reference <a href="http://nodejs.org/api/globals.html">http://nodejs.org/api/globals.html</a></p>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div class="paragraph">
+          
+        <p>Complete. All functions should behave as expected.</p>
+      </div>
+      
+        
+      </div>
+      
+      
+      <div class="sect2 api">
+        <h3 id="_http">HTTP</h3>
+        
+      <div class="ulist">
+        
+        <ul>
+        
+          <li>
+            <p>Node.js reference <a href="http://nodejs.org/api/http.html">http://nodejs.org/api/http.html</a></p>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div class="paragraph">
+          
+        <p>Complete, except for http.Agent.</p>
+      </div>
+      
+        
+      </div>
+      
+      
+      <div class="sect2 api">
+        <h3 id="_https">HTTPS</h3>
+        
+      <div class="ulist">
+        
+        <ul>
+        
+          <li>
+            <p>Node.js reference <a href="http://nodejs.org/api/https.html">http://nodejs.org/api/https.html</a></p>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div class="paragraph">
+          
+        <p>Work not started.</p>
+      </div>
+      
+        
+      </div>
+      
+      
+      <div class="sect2 api">
+        <h3 id="_modules">Modules</h3>
+        
+      <div class="ulist">
+        
+        <ul>
+        
+          <li>
+            <p>Node.js reference <a href="http://nodejs.org/api/modules.html">http://nodejs.org/api/modules.html</a></p>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div class="paragraph">
+          
+        <p>Complete, except for project-based module loading (<a href="https://github.com/projectodd/nodej/issues/4">https://github.com/projectodd/nodej/issues/4</a>)</p>
+      </div>
+      
+        
+      </div>
+      
+      
+      <div class="sect2 api">
+        <h3 id="_net">Net</h3>
+        
+      <div class="ulist">
+        
+        <ul>
+        
+          <li>
+            <p>Node.js reference <a href="http://nodejs.org/api/net.html">http://nodejs.org/api/net.html</a></p>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div class="paragraph">
+          
+        <p>Complete. All functions should behave as expected.</p>
+      </div>
+      
+        
+      </div>
+      
+      
+      <div class="sect2 api">
+        <h3 id="_os">OS</h3>
+        
+      <div class="ulist">
+        
+        <ul>
+        
+          <li>
+            <p>Node.js reference <a href="http://nodejs.org/api/os.html">http://nodejs.org/api/os.html</a></p>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div class="paragraph">
+          
+        <p>Incomplete. Some functions are currently stubbed.</p>
+      </div>
+      
+        
+      </div>
+      
+      
+      <div class="sect2 api">
+        <h3 id="_path">Path</h3>
+        
+      <div class="ulist">
+        
+        <ul>
+        
+          <li>
+            <p>Node.js reference <a href="http://nodejs.org/api/path.html">http://nodejs.org/api/path.html</a></p>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div class="paragraph">
+          
+        <p>Complete. All functions should behave as expected.</p>
+      </div>
+      
+        
+      </div>
+      
+      
+      <div class="sect2 api">
+        <h3 id="_process">Process</h3>
+        
+      <div class="ulist">
+        
+        <ul>
+        
+          <li>
+            <p>Node.js reference <a href="http://nodejs.org/api/process.html">http://nodejs.org/api/process.html</a></p>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div class="paragraph">
+          
+        <p>Incomplete (lanceball)</p>
+      </div>
+      
+        
+      </div>
+      
+      
+      <div class="sect2 api">
+        <h3 id="_punycode">Punycode</h3>
+        
+      <div class="ulist">
+        
+        <ul>
+        
+          <li>
+            <p>Node.js reference <a href="http://nodejs.org/api/punycode.html">http://nodejs.org/api/punycode.html</a></p>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div class="paragraph">
+          
+        <p>Complete. All functions should behave as expected.</p>
+      </div>
+      
+        
+      </div>
+      
+      
+      <div class="sect2 api">
+        <h3 id="_query_strings">Query Strings</h3>
+        
+      <div class="ulist">
+        
+        <ul>
+        
+          <li>
+            <p>Node.js reference <a href="http://nodejs.org/api/querystring.html">http://nodejs.org/api/querystring.html</a></p>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div class="paragraph">
+          
+        <p>Complete. All functions should behave as expected.</p>
+      </div>
+      
+        
+      </div>
+      
+      
+      <div class="sect2 api">
+        <h3 id="_readline">Readline</h3>
+        
+      <div class="ulist">
+        
+        <ul>
+        
+          <li>
+            <p>Node.js reference <a href="http://nodejs.org/api/readline.html">http://nodejs.org/api/readline.html</a></p>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div class="paragraph">
+          
+        <p>Work not started.</p>
+      </div>
+      
+        
+      </div>
+      
+      
+      <div class="sect2 api">
+        <h3 id="_repl">REPL</h3>
+        
+      <div class="ulist">
+        
+        <ul>
+        
+          <li>
+            <p>Node.js reference <a href="http://nodejs.org/api/repl.html">http://nodejs.org/api/repl.html</a></p>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div class="paragraph">
+          
+        <p>Work not started.</p>
+      </div>
+      
+        
+      </div>
+      
+      
+      <div class="sect2 api">
+        <h3 id="_stdio">STDIO</h3>
+        
+      <div class="ulist">
+        
+        <ul>
+        
+          <li>
+            <p>Node.js reference <a href="http://nodejs.org/api/stdio.html">http://nodejs.org/api/stdio.html</a></p>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div class="paragraph">
+          
+        <p>Complete. All functions should behave as expected.</p>
+      </div>
+      
+        
+      </div>
+      
+      
+      <div class="sect2 api">
+        <h3 id="_stream">Stream</h3>
+        
+      <div class="ulist">
+        
+        <ul>
+        
+          <li>
+            <p>Node.js reference <a href="http://nodejs.org/api/stream.html">http://nodejs.org/api/stream.html</a></p>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div class="paragraph">
+          
+        <p>Complete. All functions should behave as expected.</p>
+      </div>
+      
+        
+      </div>
+      
+      
+      <div class="sect2 api">
+        <h3 id="_string_decoder">String Decoder</h3>
+        
+      <div class="ulist">
+        
+        <ul>
+        
+          <li>
+            <p>Node.js reference <a href="http://nodejs.org/api/string_decoder.html">http://nodejs.org/api/string_decoder.html</a></p>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div class="paragraph">
+          
+        <p>Work not started.</p>
+      </div>
+      
+        
+      </div>
+      
+      
+      <div class="sect2 api">
+        <h3 id="_timers">Timers</h3>
+        
+      <div class="ulist">
+        
+        <ul>
+        
+          <li>
+            <p>Node.js reference <a href="http://nodejs.org/api/timers.html">http://nodejs.org/api/timers.html</a></p>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div class="paragraph">
+          
+        <p>Complete. All functions should behave as expected.</p>
+      </div>
+      
+        
+      </div>
+      
+      
+      <div class="sect2 api">
+        <h3 id="_tls_ssl">TLS/SSL</h3>
+        
+      <div class="ulist">
+        
+        <ul>
+        
+          <li>
+            <p>Node.js reference <a href="http://nodejs.org/api/tls.html">http://nodejs.org/api/tls.html</a></p>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div class="paragraph">
+          
+        <p>Work not started.</p>
+      </div>
+      
+        
+      </div>
+      
+      
+      <div class="sect2 api">
+        <h3 id="_tty">TTY</h3>
+        
+      <div class="ulist">
+        
+        <ul>
+        
+          <li>
+            <p>Node.js reference <a href="http://nodejs.org/api/tty.html">http://nodejs.org/api/tty.html</a></p>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div class="paragraph">
+          
+        <p>Work not started.</p>
+      </div>
+      
+        
+      </div>
+      
+      
+      <div class="sect2 api">
+        <h3 id="_udp_datagram">UDP/Datagram</h3>
+        
+      <div class="ulist">
+        
+        <ul>
+        
+          <li>
+            <p>Node.js reference <a href="http://nodejs.org/api/dgram.html">http://nodejs.org/api/dgram.html</a></p>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div class="paragraph">
+          
+        <p>Work not started.</p>
+      </div>
+      
+        
+      </div>
+      
+      
+      <div class="sect2 api">
+        <h3 id="_url">URL</h3>
+        
+      <div class="ulist">
+        
+        <ul>
+        
+          <li>
+            <p>Node.js reference <a href="http://nodejs.org/api/url.html">http://nodejs.org/api/url.html</a></p>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div class="paragraph">
+          
+        <p>Complete. All functions should behave as expected.</p>
+      </div>
+      
+        
+      </div>
+      
+      
+      <div class="sect2 api">
+        <h3 id="_utilities">Utilities</h3>
+        
+      <div class="ulist">
+        
+        <ul>
+        
+          <li>
+            <p>Node.js reference <a href="http://nodejs.org/api/util.html">http://nodejs.org/api/util.html</a></p>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div class="paragraph">
+          
+        <p>Complete. All functions should behave as expected. Modified copy of Node.js
+      source code.</p>
+      </div>
+      
+        
+      </div>
+      
+      
+      <div class="sect2 api">
+        <h3 id="_vm">VM</h3>
+        
+      <div class="ulist">
+        
+        <ul>
+        
+          <li>
+            <p>Node.js reference <a href="http://nodejs.org/api/vm.html">http://nodejs.org/api/vm.html</a></p>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div class="paragraph">
+          
+        <p>Work not started, but probably irrelevant given the platform differences.</p>
+      </div>
+      
+        
+      </div>
+      
+      
+      <div class="sect2 api">
+        <h3 id="_zlib">ZLIB</h3>
+        
+      <div class="paragraph">
+          
+        <p><a href="http://nodejs.org/api/vm.html">http://nodejs.org/api/vm.html</a></p>
+      </div>
+      <div class="paragraph">
+          
+        <p>Work not started, but probably irrelevant given the platform differences.</p>
+      </div>
+      
+        
+      </div>
+      
+      
+        </div>
+        
+      </div>
+    </div>
+    <div class="container">
+      <div class="well">
+        CI Build Status
+        <p>
+          <a href="http://travis-ci.org/projectodd/nodej">
+            <img alt="Travis-CI Build Status" src="https://secure.travis-ci.org/projectodd/nodej.png">
+          </a>
+          <a href="https://buildhive.cloudbees.com/job/projectodd/job/nodej/">
+            <img alt="Cloudbees CI Build Status" src="https://buildhive.cloudbees.com/job/projectodd/job/nodej/badge/icon">
+          </a>
+        </p>
+      </div>
+      <hr>
+      <footer>
+        <p>&copy; Project Odd 2013</p>
+      </footer>
+    </div>
+  </body>
+</html>
