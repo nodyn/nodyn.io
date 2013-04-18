@@ -3,17 +3,17 @@ Lance Ball <lball@redhat.com>
 2013-04-15
 :awestruct-layout: base
 
-== NodeJ Completion of the Node.js API ==
+== Nodyn Completion of the Node.js API ==
 
 The Node.js API is fairly large, and some of it is really very specific to
 the fact that Node.js is built in C and thus dependent on system level 
 functionality. The system level addons are an obvious example of this. Since
-NodeJ is written in Java and thus freed from the binary shackles of the
+Nodyn is written in Java and thus freed from the binary shackles of the
 Operating System, some of the stuff in Node.js just doesn't make sense
-in NodeJ.
+in Nodyn.
 
 This document is an attempt to clarify what bits of the Node.js API are
-available in NodeJ and to identify any workarounds as necessary.
+available in Nodyn and to identify any workarounds as necessary.
 
 In some cases, we've copied the Node.js javascript files as-is. When the Node.js
 source is dependent only on Javascript bits, and nothing in the C bindings,
@@ -35,7 +35,7 @@ source code.
 [role=api]
 === Buffer ===
 - Node.js reference http://nodejs.org/api/buffer.html
-- NodeJ status details http://nodyn.io/api/buffer
+- Nodyn status details http://nodyn.io/api/buffer
 
 In progress (lanceball).
 
@@ -43,7 +43,7 @@ In progress (lanceball).
 === C Addons ===
 - Node.js reference http://nodejs.org/api/addons.html
 
-Not applicable. Extensions to NodeJ can be written in Java, Javascript, JRuby,
+Not applicable. Extensions to Nodyn can be written in Java, Javascript, JRuby,
 Python or any other language supported by vert.x.
 
 [role=api]
