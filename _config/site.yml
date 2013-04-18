@@ -6,7 +6,7 @@ github: http://github.com/projectodd/nodej
 
 profiles:
   production:
-    base_url: http://nodej.org
+    base_url: http://nodyn.io
     deploy:
       host: github_pages
       branch: gh-pages
