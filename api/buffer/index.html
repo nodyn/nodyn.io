@@ -50,6 +50,14 @@
           
         <p>Reference Document: <a href="http://nodejs.org/api/buffer.html">http://nodejs.org/api/buffer.html</a></p>
       </div>
+      <div class="paragraph">
+          
+        <p>NodeJ&#8217;s buffers differ slightly from those in node.js in that they are not a
+      fixed size. They will grow to accommodate any overflow. This has some
+      implications on a few of the methods. For example, Buffer.concat ignores the
+      totalLength parameter, and buff.copy doesn&#8217;t fail when you exceed the length of
+      the buffer.</p>
+      </div>
       
       <div class="dlist api">
         
@@ -117,7 +125,8 @@
           </li>
         
           <li>
-            <p>Class Method: Buffer.concat(list, [totalLength])</p>
+            <p>Class Method: Buffer.concat(list, [totalLength]) <strong>Complete</strong>
+      Note: totalLength is ignored</p>
             
           </li>
         
