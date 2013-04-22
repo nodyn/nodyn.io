@@ -1,3 +1,5 @@
+source 'https://rubygems.org'
+
 gem 'awestruct'
 gem 'asciidoctor'
 gem 'haml'
