@@ -112,7 +112,7 @@
           </li>
         
           <li>
-            <p>Nodyn status details <a href="http://nodyn.io/api/buffer">http://nodyn.io/api/buffer</a></p>
+            <p>Nodyn status details: <a href="/api/buffer">Buffer Status</a></p>
             
           </li>
         
@@ -191,8 +191,9 @@
       </div>
       <div class="paragraph">
           
-        <p>Clustering is handled for now through vert.x builtin clustering. (Node.js
-      stability index 1)</p>
+        <p>Clustering is handled for now through vert.x builtin clustering, which itself
+      uses <a href="http://www.hazelcast.com/">hazelcast</a> for the implementation. Vert.x
+      does not yet expose clustering data or an API.</p>
       </div>
       
         
@@ -354,7 +355,34 @@
       </div>
       <div class="paragraph">
           
-        <p>Complete. All functions should behave as expected.</p>
+        <p>Mostly complete. The CommonJS module loader built into DynJS is lacking a few
+      features. The following functions and objects are not yet supported.</p>
+      </div>
+      <div class="ulist">
+        
+        <ul>
+        
+          <li>
+            <p><tt>require.resolve()</tt></p>
+            
+          </li>
+        
+          <li>
+            <p><tt>require.caches</tt></p>
+            
+          </li>
+        
+          <li>
+            <p><tt>require.extensions</tt></p>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div class="paragraph">
+          
+        <p>Also, since many vert.x apps run from a Jar file, I&#8217;m not quite sure what to do
+      yet with <tt>__filename</tt> and <tt>__dirname</tt>.</p>
       </div>
       
         
@@ -838,7 +866,7 @@
       </div>
       <div class="paragraph">
           
-        <p>Work not started, but probably irrelevant given the platform differences.</p>
+        <p>Work not started.</p>
       </div>
       
         
