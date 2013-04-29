@@ -141,6 +141,7 @@ Partially complete. See the compatibility doc for details.
 [role=api]
 === OS ===
 - Node.js reference http://nodejs.org/api/os.html
+- Nodyn status details: link:/api/os[OS Status]
 
 Incomplete. Some functions are currently stubbed.
 
