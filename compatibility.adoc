@@ -117,7 +117,7 @@ yet with `__filename` and `__dirname`.
 - Node.js reference http://nodejs.org/api/http.html
 - Nodyn status details: link:/api/http[HTTP Status]
 
-Complete, except for http.Agent.
+Complete, except for http.Agent and other issues noted in the compatibility doc.
 
 [role=api]
 === HTTPS ===
@@ -134,8 +134,9 @@ Complete, except for project-based module loading (https://github.com/projectodd
 [role=api]
 === Net ===
 - Node.js reference http://nodejs.org/api/net.html
+- Nodyn status details: link:/api/net[Net Status]
 
-Complete. All functions should behave as expected.  
+Partially complete. See the compatibility doc for details.
 
 [role=api]
 === OS ===
