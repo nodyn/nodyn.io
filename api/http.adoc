@@ -1,0 +1,85 @@
+= HTTP
+Lance Ball <lball@redhat.com>
+2013-04-29
+:awestruct-layout: base
+
+== Status of the Node.js HTTP API ==
+
+Reference Document: http://nodejs.org/api/http.html
+
+Nodyn's implementation of the Node.js HTTP API is mostly complete. There are,
+however a few oustanding issues. 1) There is not yet any support for http.Agent
+and http.globalAgent. 2) Sockets for IncomingMessage.socket and ClientRequest
+socket events are not available yet, as Vert.x does not expose the underlying
+socket object through its HTTP API. 3) Connection upgrades with the
+`ClientRequest.upgrade` and `Server.upgrade` events are not yet supported.
+
+[role = api]
+HTTP::
+  * http.STATUS_CODES *Complete*
+  * http.createServer([requestListener]) *Complete*
+  * http.createClient([port], [host]) *Complete*
+  * http.request(options, callback) *Complete*
+  * http.get(options, callback) *Complete*
+
+Class: http.Server::
+  * Event: 'request' *Complete*
+  * Event: 'connection' *Complete*
+  * Event: 'close' *Complete*
+  * Event: 'checkContinue' *Complete*
+  * Event: 'connect' *Complete*
+  * Event: 'upgrade'
+  * Event: 'clientError'
+  * server.listen(port, [hostname], [backlog], [callback]) *Complete*
+  * server.listen(path, [callback]) *Complete*
+  * server.listen(handle, [callback]) *Complete*
+  * server.close([callback]) *Complete*
+  * server.maxHeadersCount *Complete*
+  * server.setTimeout(msecs, callback) *Complete*
+  * server.timeout *Complete*
+
+Class: http.ServerResponse::
+  * Event: 'close' *Complete*
+  * response.writeContinue() *Complete*
+  * response.writeHead(statusCode, [reasonPhrase], [headers]) *Complete*
+  * response.setTimeout(msecs, callback) *Complete*
+  * response.statusCode *Complete*
+  * response.setHeader(name, value) *Complete*
+  * response.headersSent *Complete*
+  * response.sendDate *Complete*
+  * response.getHeader(name) *Complete*
+  * response.removeHeader(name) *Complete*
+  * response.write(chunk, [encoding]) *Complete*
+  * response.addTrailers(headers) *Complete*
+  * response.end([data], [encoding]) *Complete*
+
+Class: http.Agent::
+  * agent.maxSockets
+  * agent.sockets
+  * agent.requests
+  * http.globalAgent
+
+Class: http.ClientRequest::
+  * Event 'response' *Complete*
+  * Event: 'socket'
+  * Event: 'connect' *Complete*
+  * Event: 'upgrade'
+  * Event: 'continue' *Complete*
+  * request.write(chunk, [encoding]) *Complete*
+  * request.end([data], [encoding]) *Complete*
+  * request.abort() *Complete*
+  * request.setTimeout(timeout, [callback]) *Complete*
+  * request.setNoDelay([noDelay])
+  * request.setSocketKeepAlive([enable], [initialDelay])
+
+Class: http.IncomingMessage::
+  * Event: 'close' *Complete*
+  * message.httpVersion *Complete*
+  * message.headers *Complete*
+  * message.trailers *Complete*
+  * message.setTimeout(msecs, callback) *Complete*
+  * message.method *Complete*
+  * message.url *Complete*
+  * message.statusCode *Complete*
+  * message.socket
+
