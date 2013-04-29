@@ -115,6 +115,7 @@ yet with `__filename` and `__dirname`.
 [role=api]
 === HTTP ===
 - Node.js reference http://nodejs.org/api/http.html
+- Nodyn status details: link:/api/http[HTTP Status]
 
 Complete, except for http.Agent.
 
