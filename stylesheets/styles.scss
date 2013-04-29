@@ -5,6 +5,9 @@
 // @import "bootstrap-responsive";
 
 body {
+  .container .hero-unit h1 {
+    margin-bottom: 10px;
+  }
   div.api {
     h3 {
       font-size: 20px;
