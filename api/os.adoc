@@ -1,0 +1,27 @@
+= OS
+Lance Ball <lball@redhat.com>
+2013-04-29
+:awestruct-layout: base
+
+== Status of the Node.js Net API ==
+
+Reference Document: http://nodejs.org/api/os.html
+
+[role = api]
+os::
+  * os.tmpdir() *Complete*
+  * os.endianness()*Complete* Always returns "BE"
+  * os.hostname() *Complete*
+  * os.type() *Complete*
+  * os.platform() *Complete* Always returns "java"
+  * os.arch() *Complete*
+  * os.release() *Complete*
+  * os.uptime() *Complete*
+  * os.loadavg() *Complete* *Partially complete* 
+    Node returns 1/5/15 averages. With Nodyn you get only the current average
+    as provided by the JVM.
+  * os.totalmem() *Complete*
+  * os.freemem() *Complete*
+  * os.cpus() *Not Implemented*
+  * os.networkInterfaces() *Not Implemented*
+  * os.EOL *Complete*
