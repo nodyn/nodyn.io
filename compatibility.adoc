@@ -129,7 +129,7 @@ Work not started.
 === Modules ===
 - Node.js reference http://nodejs.org/api/modules.html
 
-Complete, except for project-based module loading (https://github.com/projectodd/nodyn/issues/4)
+Complete.
 
 [role=api]
 === Net ===
