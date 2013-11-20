@@ -221,7 +221,7 @@ Work not started.
 === UDP/Datagram ===
 - Node.js reference http://nodejs.org/api/dgram.html
 
-Work not started.
+Complete http://github.com/projectodd/nodyn/issues/30
 
 [role=api]
 === URL ===
