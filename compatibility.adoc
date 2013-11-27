@@ -77,7 +77,7 @@ Work not started.
 === DNS ===
 - Node.js reference http://nodejs.org/api/dns.html
 
-Work not started.
+Full compatability complete.
 
 [role=api]
 === Domain ===
