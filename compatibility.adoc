@@ -48,7 +48,7 @@ Python or any other language supported by vert.x.
 
 [role=api]
 === Child Processes ===
-- Node.js reference http://nodejs.org/api/child_processes.html
+- Node.js reference http://nodejs.org/api/child_process.html
 
 Not applicable. If we do implement this API, it certainly won't actually be
 spawning new processes.
@@ -244,7 +244,7 @@ Work not started.
 
 [role=api]
 === ZLIB ===
-http://nodejs.org/api/vm.html
+http://nodejs.org/api/zlib.html
 
 Work not started, but probably irrelevant given the platform differences.
 
