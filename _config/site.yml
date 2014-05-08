@@ -1,8 +1,8 @@
-name: NodeJ
+name: Nodyn
 title: Node.js API for the JVM
 org: Project Odd
 base_url: ''
-github: http://github.com/projectodd/nodyn
+github: http://github.com/nodyn/nodyn
 
 profiles:
   production:
@@ -10,4 +10,3 @@ profiles:
     deploy:
       host: github_pages
       branch: gh-pages
-
