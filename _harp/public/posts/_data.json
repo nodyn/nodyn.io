@@ -1,0 +1,39 @@
+{
+  "talk-to-us": {
+    "title": "Talk to Us",
+    "author": "Lance Ball",
+    "date": "4 September 2014"
+  },
+
+  "2014-roadmap": {
+    "title": "Nodyn Roadmap",
+    "author": "Lance Ball",
+    "date": "22 August, 2014"
+  },
+
+  "nodejs-inside-vertx": {
+    "title": "Node.js inside Vert.x",
+    "author": "Bob McWhirter",
+    "date": "21 August, 2014"
+  },
+
+  "vertx-with-nodyn": {
+    "title": "Vert.x with Nodyn",
+    "author": "Bob McWhirter",
+    "date": "20 August, 2014"
+  },
+
+  "welcome-to-nodyn": {
+    "title": "Welcome to Nodyn",
+    "author": "Bob McWhirter",
+    "date": "19 August, 2014"
+  },
+
+  "feed": {
+    "layout": false
+  },
+
+  "index": {
+    "disable_comments": true
+  }
+}

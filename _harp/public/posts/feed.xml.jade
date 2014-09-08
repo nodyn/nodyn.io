@@ -1,0 +1,16 @@
+doctype xml
+rss(version="2.0", xmlns:atom="http://www.w3.org/2005/Atom")
+  channel  
+    title= title
+    link= uri
+    description Nodyn: Node.js for the JVM
+    atom:link(href="#{ uri }/feed.xml", rel="self", type="application/rss+xml")
+    for post, slug in public.posts._data
+      if ( slug != 'index' && slug != 'feed' )
+        item
+          title= post.title
+          description <![CDATA[!{ partial(slug) }]]>
+          pubDate= new Date(post.date)
+          link #{ uri }/posts/#{ slug }
+          guid(isPermaLink="true") #{ uri }/posts/#{ slug }
+

@@ -1,0 +1,128 @@
+@import "bootstrap.min.css";
+
+body {
+  background-color: #f7f7f7;
+  h1,h2,h3,h4,h5 {
+    font-family: "Josefin Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  a {
+    color: #d9230f;
+  }
+  a:hover {
+    color: #666;
+  }
+  div.api {
+    h3 {
+      font-size: 20px;
+      line-height: 30px;
+    }
+    dt {
+      font-size: 16px;
+      line-height: 30px;
+      margin-top: 8px;
+    }
+    dd ul {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+    }
+    margin-bottom: 16px;
+    margin-top: 16px;
+    border-top: 1px solid #ddd;
+  }
+
+  .navbar .nav>li>a {
+    font-size: 16px;
+  }
+
+  .navbar .nav>li>a.brand {
+    font-size: 20px;
+  }
+
+  .span4.detail {
+    margin-left: 15px;
+  }
+
+  .post .content .posts-index {
+    h1 {
+      font-size: 200%;
+    }
+    .read-more {
+      text-align: right;
+      padding-bottom: 2em;
+    }
+    .post-excerpt {
+      font-size: 100%;
+      h1, h2, h3  {
+        display: none;
+      }
+    }
+  }
+  pre {
+    background-color: white;
+    font-size: 70%;
+  }
+  
+
+  .sidebar-module {
+    margin: 0 -15px 15px;
+    padding: 15px;
+  }
+
+  .sidebar-module-inset {
+    padding: 15px;
+    background-color: #eee;
+    border-radius: 4px;
+  }
+
+  .sidebar-module.archives {
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      li {
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+      }
+    }
+  }
+
+  .post {
+    .meta {
+      h1 {
+        font-size: 310%;
+        line-height: 1em;
+      }
+      h2 {
+        font-size: 160%;
+        line-height: 1em;
+      }
+      h3 {
+        font-size: 140%;
+        line-height: 1em;
+      }
+      padding-bottom: 1em;
+    }
+    .content {
+      font-size: 120%;
+      h1 {  
+        padding-top: 1ex;
+        font-size: 160%;
+        line-height: 1em;
+      }
+      h2 {  
+        font-size: 140%;
+        line-height: 1em;
+      }
+      p {
+        line-height: 1.8em;
+        padding-bottom: .5em;
+      }
+      ul {
+        li {
+          line-height: 2em;
+        }
+      }
+    }
+  }
+}

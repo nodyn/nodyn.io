@@ -1,0 +1,83 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><title> Welcome to Nodyn</title><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" type="text/css" href="/stylesheets/styles.css"><link rel="stylesheet" type="text/css" href="/javascripts/highlight/styles/github.css"><script src="/javascripts/highlight/highlight.pack.js"></script><script>hljs.initHighlightingOnLoad();</script><link rel="icon" type="image/x-icon" href="/favicon.ico"><!-- [if lt IE 9]<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script><script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>--><script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script></head><body><a href="https://github.com/nodyn/nodyn"><img style="position: absolute; top: 50px; right: 0; border: 0; z-index:50" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a><div role="navigation" class="navbar navbar-default"><div class="container-fluid"><div class="navbar-header"><button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="/" class="navbar-brand">Nodyn</a></div><div class="navbar-collapse collapse"><ul class="nav navbar-nav"><li><a href="/posts">Blog</a></li><li><a href="http://github.com/nodyn/nodyn/issues">Issues</a></li><li><a href="http://github.com/nodyn/nodyn/wiki">Wiki</a></li><li><a href="/compatibility">API Compatibility</a></li><li><a href="http://travis-ci.org/nodyn/nodyn"><img src="https://secure.travis-ci.org/nodyn/nodyn.png" alt="Travis-CI Build Status"></a></li></ul></div></div></div><div class="container"><div class="row"><div class="col-md-8"><div class="post"><div class="meta"><h1>Welcome to Nodyn</h1><h2>Bob McWhirter</h2><h3>19 August, 2014</h3></div><div class="content"><h1>Who, What, How?</h1>
+<p><a href="http://nodyn.io/">Nodyn</a> is <a href="http://redhat.com/">Red Hat</a>&#39;s implementation of <a href="http://nodejs.org/">Node.js</a> on top of the Java Virtual Machine.
+Currently Nodyn is tracking the 0.12 release of Node.js. The project is lead by
+<a href="http://twitter.com/lanceball">Lance Ball</a> with <a href="http://twitter.com/bobmcwhirter">Bob McWhirter</a> pitching in.</p>
+<p>Lance and Bob are part of the team responsible for <a href="http://torquebox.org/">TorqueBox</a>, and are familiar
+with taking languages and frameworks that don&#39;t run on the Java Virtual Machine
+already, and making them run on the JVM.</p>
+<!-- more -->
+
+<p>The foundations of Nodyn include <a href="http://dynjs.org/">DynJS</a>, <a href="http://netty.io/">Netty</a>, and <a href="http://vertx.io/">Vertx</a>.  Initially Nodyn was
+conceived as a clean-room implemention of the public-facing APIs exposed by
+Node.js, but this route turned out to be problematic for a few reasons:</p>
+<ul>
+<li>The public-facing APIs were not always very well-documented.</li>
+<li>Various NPM modules would use un-documented APIs.</li>
+</ul>
+<p>Re-evaluating the Node.js codebase, and spending some weekends reading the
+Javascript and C++ code with a cold glass of beer, the team figured out how
+to re-use the existing actual Javascript code from Node.js, and simply replace
+the C++ bits.  In a fortunate twist, the C++ bits are replaced with some Java
+and some Javascript.  Nodyn, arguably, is implemented more in Javascript than
+Node.js is.  This is possible due to the Java integration facilities of DynJS.</p>
+<p>Given this new strategy, the public-facing APIs provided by Node.js, as
+implemented in the various .js files in their <code>lib/</code> directory, are also
+exactly the same in Nodyn.  Also, it turns out that the API surface defined 
+by the various <code>process.binding(...)</code> objects is significantly smaller than
+the public-facing APIs, reducing the amount of work required by the Nodyn team.</p>
+<p>For instance, in a clean-room implementation, all of <code>http.js</code> would need to be
+implemented, from scratch.  By building upon actual Node.js sources, the
+<code>http.js</code> module requires only an <code>HTTPParser</code> implementation, and builds itself
+on top of the <code>net.js</code> module.</p>
+<p>Some of the Node.js APIs, particular <code>child_process</code> and much of <code>fs</code> rely upon
+facilities not present in the JVM. Nodyn leverages the jnr-posix library (the
+same library used by JRuby) to provide capabilities for working with integer-based
+file-descriptors, and sending these file-descriptors to forked child processes.</p>
+<h1>But WHY?</h1>
+<p>While we&#39;ve answered the <em>Who</em>, the <em>What</em> and the <em>How</em>, we should still address
+the <em>Why</em> of Nodyn.  Node.js is, on the outside, a single-threaded framework. Java
+can handle threads without a problem.  But Java can still perform better with reactive,
+asynchronous frameworks.  Just because Java <em>can</em> use threads like magic, each thread 
+does still have a certain amount of overhead (stack space, context-switching, etc),
+so if we can avoid using them, that&#39;s great!  </p>
+<p>Additionally, just as Node.js likes to say &quot;Node.js is multi-threaded everywhere,
+except <em>your</em> code&quot;, Nodyn follows the same route. There are lots of threads inside
+of Nodyn, but only a single thread ever executes your code.</p>
+<p>That <em>is</em> great, but it doesn&#39;t doesn&#39;t answer the question, does it?</p>
+<p>The JVM has a <em>lot</em> going for it. There&#39;s a ton of libraries existing for it. There&#39;s
+tons of enterprises that are already familiar with running JVM-based stacks in their
+data-centers.  And these guys would like to board the hype train of Node.js.  Nodyn allows
+that.</p>
+<p>Additionally, while it&#39;s convenient to run multiple Node.js processes to use many processors,
+Nodyn will soon provide the ability to run multiple Node.js &quot;processes&quot; within a single
+JVM process.  Nodyn has been constructed, from the ground up, without any shared global 
+state or variables. It is super-simple to embed many completely separate Node.js runtimes
+inside the JVM using Nodyn.</p>
+<h1>What&#39;s left?</h1>
+<p>Lots!</p>
+<p>We still need to figure out how Nodyn lives within the large Node.js community and
+ecosystem. Specifically, it&#39;d be great to be able to have JVM-flavored NPM modules,
+possible as alternative to C++-based modules.</p>
+<p>The Ruby world saw this transition, with the support of <code>-java</code> gems being added
+to the RubyGems packaging system.  A single named gem may have both a C-based version
+or a Java-based version.</p>
+<p>Additionally, there are still parts of the Node.js core APIs that we haven&#39;t necessarily
+implemented.  <a href="http://github.com/nodyn/nodyn">Feel free to pitch in</a>!</p>
+<div id="disqus_thread"></div><script>var disqus_shortname = 'nodyn'; 
+var disqus_identifier = 'welcome-to-nodyn';
+var disqus_title = 'Welcome to Nodyn';
+
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><noscript><Please>enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></Please><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></noscript></div></div></div><div class="col-sm-3 col-sm-offset-1 blog-sidebar"><div class="sidebar-module sidebar-module-inset"><h4>About Nodyn</h4><div class="description">Nodyn is a Node.js compatible framework, running on
+the JVM powered by the DynJS Javascript runtime.
+This is our blog.
+</div></div><div class="sidebar-module archives"><h4>Archives</h4><ul><li><a href="/posts/talk-to-us">Talk to Us<div class="smaller"> 4 September 2014</div></a></li><li><a href="/posts/2014-roadmap">Nodyn Roadmap<div class="smaller"> 22 August, 2014</div></a></li><li><a href="/posts/nodejs-inside-vertx">Node.js inside Vert.x<div class="smaller"> 21 August, 2014</div></a></li><li><a href="/posts/vertx-with-nodyn">Vert.x with Nodyn<div class="smaller"> 20 August, 2014</div></a></li><li><a href="/posts/welcome-to-nodyn">Welcome to Nodyn<div class="smaller"> 19 August, 2014</div></a></li><li><a href="/posts/feed"><div class="smaller"> </div></a></li></ul></div></div></div></div><div class="container"><footer class="well">&copy; Red Hat, Inc. 2013-2014</footer></div><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-40480843-1', 'nodyn.io');
+ga('send', 'pageview');</script></body></html>

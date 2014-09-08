@@ -1,0 +1,10 @@
+{
+  "globals": {
+    "name": "Nodyn",
+    "title": "Node.js API for the JVM",
+    "org": "Project Odd",
+    "base_url": "",
+    "github": "http://github.com/nodyn/nodyn",
+    "uri": "http://nodyn.io"
+  }
+}

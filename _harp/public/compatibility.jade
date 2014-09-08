@@ -1,0 +1,215 @@
+h2 Nodyn Completion of the Node.js API
+
+:markdown
+  The node.js API is fairly large, so there is a lot to do. However, in
+  recent releases, the underlying C/C++ dependencies have been very nicely
+  consolidated under <code>process.binding</code>. The Node.js javascript
+  codes simply work with this SPI, so our approach is to implement these
+  bindings in Java, and make the <code>process.binding</code> calls return
+  Java/Javascript instead of C++ based objects.
+
+  In most cases, we've copied the Node.js javascript files as-is.
+
+.api
+  h3 Assert
+  :markdown
+    - Reference http://nodejs.org/api/assert.html
+    - Complete. 
+
+.api
+  h3 Buffer
+  :markdown
+    - Reference http://nodejs.org/api/buffer.html
+    - Complete. 
+
+.api
+  h3 C Addons
+  :markdown
+    - Reference http://nodejs.org/api/addons.html
+    - Not applicable. 
+
+.api
+  h3 Child Processes
+  :markdown
+    - Reference http://nodejs.org/api/child_process.html
+    - In progress. (bobmcw)
+
+.api
+  h3 Cluster
+  :markdown
+    - Reference http://nodejs.org/api/cluster.html
+    - Not started.
+
+.api
+  h3 Crypto
+  :markdown
+    - Reference http://nodejs.org/api/crypto.html
+    - In progress. https://github.com/nodyn/nodyn/issues/24
+
+.api
+  h3 Debugger
+  :markdown
+    - Reference http://nodejs.org/api/debugger.html
+    - Work not started.
+
+.api
+  h3 DNS
+  :markdown
+    - Reference http://nodejs.org/api/dns.html
+    - Complete.
+
+.api
+  h3 Domain
+  :markdown
+    - Reference http://nodejs.org/api/domain.html
+    - Incomplete. 
+
+.api
+  h3 Events
+  :markdown
+    - Reference http://nodejs.org/api/events.html
+    - Complete. 
+
+.api
+  h3 File System
+  :markdown
+    - Reference http://nodejs.org/api/fs.html
+    - Complete.
+
+.api
+  h3 Globals
+  :markdown
+    - Reference http://nodejs.org/api/globals.html
+    - Complete.
+
+.api
+  h3 HTTP
+  :markdown
+    - Reference http://nodejs.org/api/http.html
+    - Complete.
+
+.api
+  h3 HTTPS
+  :markdown
+    - Reference http://nodejs.org/api/https.html
+    - Work not started.
+
+.api
+  h3 Modules
+  :markdown
+    - Reference http://nodejs.org/api/modules.html
+    - Complete.
+
+.api
+  h3 Net
+  :markdown
+    - Reference http://nodejs.org/api/net.html
+    - Complete.
+
+.api
+  h3 OS
+  :markdown
+    - Reference http://nodejs.org/api/os.html
+    - Complete.
+
+.api
+  h3 Path
+  :markdown
+    - Reference http://nodejs.org/api/path.html
+    - Complete.
+
+.api
+  h3 Process
+  :markdown
+    - Reference http://nodejs.org/api/process.html
+    - Complete.
+
+.api
+  h3 Punycode
+  :markdown
+    - Reference http://nodejs.org/api/punycode.html
+    - Complete.
+
+.api
+  h3 Query Strings
+  :markdown
+    - Reference http://nodejs.org/api/querystring.html
+    - Complete.
+
+.api
+  h3 Readline
+  :markdown
+    - Reference http://nodejs.org/api/readline.html
+    - Complete.
+
+.api
+  h3 REPL
+  :markdown
+    - Reference http://nodejs.org/api/repl.html
+    - Complete.
+
+.api
+  h3 STDIO
+  :markdown
+    - Reference http://nodejs.org/api/stdio.html
+    - Complete. 
+
+.api
+  h3 Streams
+  :markdown
+    - Reference http://nodejs.org/api/stream.html
+    - Complete.
+
+.api
+  h3 String Decoder
+  :markdown
+    - Reference http://nodejs.org/api/string_decoder.html
+    - Complete.
+
+.api
+  h3 Timers
+  :markdown
+    - Reference http://nodejs.org/api/timers.html
+    - Complete.
+
+.api
+  h3 TLS/SSL
+  :markdown
+    - Reference http://nodejs.org/api/tls.html
+    - Work not started. https://github.com/nodyn/nodyn/issues/29
+
+.api
+  h3 TTY
+  :markdown
+    - Reference http://nodejs.org/api/tty.html
+    - Complete.
+
+.api
+  h3 UDP/Datagram
+  :markdown
+    - Reference http://nodejs.org/api/dgram.html
+    - Complete.
+
+.api
+  h3 URL
+  :markdown
+    - Reference http://nodejs.org/api/url.html
+    - Complete.
+
+.api
+  h3 Utilities
+  :markdown
+    - Reference http://nodejs.org/api/util.html
+    - Complete.
+
+.api
+  h3 VM
+  :markdown
+    - Reference http://nodejs.org/api/vm.html
+    - Complete.
+
+.api
+  h3 ZLIB
+  :markdown
+    - Reference http://nodejs.org/api/zlib.html
+    - Complete.

@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="utf-8" ?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel> <title>Node.js API for the JVM</title><link>http://nodyn.io</link><description>Nodyn: Node.js for the JVM</description><atom:link href="http://nodyn.io/feed.xml" rel="self" type="application/rss+xml"></atom:link><item><title>Talk to Us</title><description><![CDATA[<h1>Talk to Us</h1>
+<p>As much as I love IRC for developer communication, it&#39;s easy to miss conversations,
+requests, bug reports, etc. And now that we&#39;re ready to start talking about Nodyn
+a bit more publicly, we really need to fill the communication gap. So, I have created
+a <a href="https://groups.google.com/forum/#!forum/nodyn">Google Group</a> to fill some of
+these holes.</p>
+<!-- more -->
+
+<p>Do you have a question about how to use Nodyn? Want to learn more about the internals?
+Would you like to ask us why we are doing this? You can do all of that and more now
+on the Google Group. So head on over there and chat us up.</p>
+]]></description><pubDate>Thu Sep 04 2014 00:00:00 GMT-0400 (EDT)</pubDate><link>http://nodyn.io/posts/talk-to-us</link><guid isPermaLink="true">http://nodyn.io/posts/talk-to-us</guid></item><item><title>Nodyn Roadmap</title><description><![CDATA[<h1>Nodyn Roadmap</h1>
+<p>Since we switched strategies and have begun focusing almost exclusively on
+the <code>process.binding</code> integration that the Node.js Javascript depends on, we
+have made great strides and major headway towards full API compatibility. This
+approach was <a href="/posts/welcome-to-nodyn">discussed briefly</a> by Bob McWhirter in
+our inaugural post. The details of this change are worthy of more explanation,
+but I will save that for another day, and just examine what this change means
+for the overall plans through the rest of this year.</p>
+<!-- more -->
+
+<h2>Project Vision</h2>
+<p>While we are aware of other efforts such as Avatar.js, our goal is to become
+the defacto Node.js runtime on the JVM. As part of this effort we intend to
+accomplish the following.</p>
+<ul>
+<li>Provide full Node.js API compatibility</li>
+<li>Integrate with existing Java technologies and publishing these technologies
+as NPM modules</li>
+<li>Work with NPM maintainers to determine the best way to include Java-based
+NPM modules in NPM repositories</li>
+<li>Integrate with existing Java servers such as <a href="http://vertx.io">Vert.x</a> and 
+<a href="http://wildfly.org/">Wildfly</a></li>
+<li>Ensure that the user workflow can be similar if not identical to native
+Node.js development</li>
+</ul>
+<h2>Project Timeline</h2>
+<p>At the moment, we have not nailed down any specific dates other than a goal
+of having an initial release by the end of 2014. The current known GitHub issues
+are now organized into two <a href="https://github.com/nodyn/nodyn/milestones">milestones on GitHub</a>.</p>
+<p>Milestone one, or M1, is focused on fleshing out the Node.js API and ensuring
+that we provide comprehensive Java and/or Javascript binding coverage. Our
+overall coverage will be measured by three high-level goals.</p>
+<ul>
+<li>Generate <a href="http://nodyn.io">http://nodyn.io</a> using harp npm module via nodyn</li>
+<li>Create example apps using the connect.js framework</li>
+<li>Create example apps using the express.js framework</li>
+</ul>
+<p>Accomplishing these three simple goals will ensure that we have broad coverage
+of the Node.js API for both networking and file system operations. While we know
+this will not ensure complete coverage, it will take us a long way towards that
+goal.</p>
+<p>For our second milestone, M2, we anticipate full API coverage. Here we will
+expand and build on the functionality delivered in M1. This milestone will also
+include a reorganization of the code base so that we take better advantage of
+the existing joyent/node.git repository structure - eliminating the need to
+copy and paste the Node.js Javascript files from Joyent as they change.
+Some specific goals are:</p>
+<ul>
+<li>In addition to running basic express.js applications, nodyn should be
+capable of hosting the <a href="https://github.com/tryghost/Ghost">Ghost blogging platform</a>.  </li>
+<li>Expand the universe of framework examples:<ul>
+<li><a href="https://github.com/flatiron/flatiron">https://github.com/flatiron/flatiron</a></li>
+<li><a href="https://github.com/koajs/koa">https://github.com/koajs/koa</a></li>
+<li><a href="https://github.com/totaljs/framework/">https://github.com/totaljs/framework/</a></li>
+<li><a href="https://github.com/mcavage/node-restify">https://github.com/mcavage/node-restify</a></li>
+<li><a href="https://github.com/socketstream/socketstream">https://github.com/socketstream/socketstream</a></li>
+<li><a href="https://github.com/balderdashy/sails/">https://github.com/balderdashy/sails/</a></li>
+</ul>
+</li>
+<li>Build nodyn in the context of the existing joyent/node.git repository structure</li>
+<li>Publish NPM modules for Vert.x event bus usage</li>
+<li>Publish Vert.x modules so that nodyn can run inside of Vert.x</li>
+</ul>
+<h2>User Feedback</h2>
+<p>Is there anything you would like to see on our roadmap that is not here? Are there
+other NPM modules that we should ensure work on Nodyn?  If you are a Java
+developer, what Java technologies would you like to integrate with? We are here
+to help. Leave your comments here, or join us in 
+<a href="http://webchat.freenode.net/?channels=nodyn">#nodyn on freenode</a>.</p>
+]]></description><pubDate>Fri Aug 22 2014 00:00:00 GMT-0400 (EDT)</pubDate><link>http://nodyn.io/posts/2014-roadmap</link><guid isPermaLink="true">http://nodyn.io/posts/2014-roadmap</guid></item><item><title>Node.js inside Vert.x</title><description><![CDATA[<h1>Strike that. Reverse it. Node.js (Nodyn) inside Vert.x</h1>
+<p><a href="http://nodyn.io/posts/vertx-with-nodyn">Yesterday</a> we talked about how to gain access to <a href="http://vertx.io/">Vert.x</a> functionality
+within your Node.js scripts run by Nodyn.  Today we&#39;re going to invert
+that idea, and show you how you can take existing Node.js workloads,
+run them inside of Vert.x (including on a cluster) and integrate
+them with existing <em>pure</em> Vert.x components you might already have.</p>
+<!-- more -->
+
+<h1>The <code>mod-nodyn</code> Vert.x module</h1>
+<p>Re-usable Vert.x components are packaged as <em>modules</em>, not unlike
+NPM modules. The <code>mod-nodyn</code> [1] module has the ability to crank up a
+Nodyn inside of Vert.x, using the existing Vert.x event-loop so that
+everything plays friendly together.</p>
+<h1>Tacos as a Service</h1>
+<p>Let&#39;s expand on our previous example, and deploy it as a cluster of
+two Vert.x processes. Yesterday, we put all of it in the same
+file, and did not really take advantage of the capabilities the
+Vert.x <em><a href="http://vertx.io/core_manual_java.html#the-event-bus">eventbus</a></em> really has to offer.  Today, we will.</p>
+<p>The moving parts are:</p>
+<ul>
+<li><code>mod-nodyn</code> to run our Node.js workload.</li>
+<li><code>tacos-web.js</code> our Node.js-based webserver.</li>
+<li><code>tacos-kitchen.js</code> a Vert.x javascript component which determines how long it takes to make tacos.</li>
+<li><code>vertx</code> to run it all.</li>
+</ul>
+<h2>The Node.js application</h2>
+<p>Our <code>tacos-web.js</code> Node.js-based web-service looks like the one yesterday,
+except that it no longer includes the bit that calculates the amount of
+time required to produce the requested number of tacos.  It still uses the
+<code>vertx2-core</code> NPM module to be able to communicate over the Vert.x 
+eventbus (see <a href="http://nodyn.io/posts/vertx-with-nodyn">yesterday&#39;s</a> post).</p>
+<pre><code>var http = require(&#39;http&#39;);
+var vertx = require(&#39;vertx2-core&#39;);
+
+var server = http.createServer( function(request, response) {
+  var url = request.url;
+  var parts = url.split( &#39;/&#39; );
+  var amount = parts[1];
+
+  vertx.eventbus.send( &#39;kitchen&#39;, { amount: amount } , function(message) {
+    response.write( amount + &#39; tacos will be ready in &#39; + message.body.wait_time + &#39; minutes&#39; );
+    response.end();
+  } );
+} );
+
+server.listen( 9000, function() {
+  console.log( &quot;Server listening on port 9000&quot; );
+} );</code></pre>
+<h2>The Vert.x Verticle</h2>
+<p>The <code>tacos-kitchen.js</code> file is a Vert.x <em>verticle</em>. It uses the normal 
+Vert.x Javascript APIs, and is <em>not</em> a Node.js component.</p>
+<p>This component simply registers an eventbus handler on the <code>kitchen</code> address and
+waits for messages.  Notice the <code>vertx2-core</code> API for the eventbus differs from the
+&quot;native&quot; <code>vertx/event_bus</code> API.  The <code>vertx2-core</code> APIs are still very fluid and
+feedback from the community would be appreciated.</p>
+<pre><code>var eventBus = require(&#39;vertx/event_bus&#39;);
+
+eventBus.registerHandler( &quot;kitchen&quot;, function(message, replier) {
+  java.lang.System.err.println( &#39;KITCHEN: Someone ordered &#39; + message.amount + &#39; tacos&#39; );
+  replier( { wait_time: message.amount * 0.2 } );
+} );
+
+java.lang.System.err.println( &quot;loaded the kitchen!&quot; );</code></pre>
+<h1>Running it all</h1>
+<h2>Clustering</h2>
+<p>One of the main benefits of Vert.x is the creation of clusters.  A Vert.x cluster 
+is distinct from a Node.js cluster. In a Vert.x cluster,
+every component still runs independently, but the eventbus spans all members
+of the cluster, and you can communicate between them without being aware of
+the actual physical topology.  To enable clustering, we just add the <code>-cluster</code>
+flag when launching Vert.x processes.</p>
+<p>In the easy case, Vert.x uses <em>multicast</em> to discover peers and wire up 
+the distributed mesh of the eventbus.  Ultimately this is performed using
+<a href="http://hazelcast.org/">Hazelcast</a>, which can be configured for any environment you need to run in.</p>
+<h2>Run <code>tacos-web.js</code> as a Node.js workload inside of Vert.x</h2>
+<p>To run <code>tacos-web.js</code> as a Node.js workload, we actually ask Vert.x to
+run the <code>mod-nodyn</code> Vert.x module, and provide configuration so it knows
+where to find the Node.js-based application.  Since we are creating
+Tacos-as-a-Service, let&#39;s call this configuration file <code>taas.conf</code>. 
+It simply contains JSON, with a single key, being <code>main</code>.  This is passed
+to Nodyn&#39;s Node.js implementation just as a filename on the commandline
+would be passed.</p>
+<pre><code>{
+  &quot;main&quot;: &quot;./tacos-web.js&quot;
+}</code></pre>
+<p>Now, to launch the Node.js-based web portion of our app by asking Vert.x to run
+our <code>mod-nodyn</code> module while passing in our <code>taas.conf</code> configuration and the
+<code>-cluster</code> flag.</p>
+<pre><code>$ vertx runmod io.nodyn.vertx~mod-nodyn~1.0.0-SNAPSHOT -conf taas.conf -cluster</code></pre>
+<p>I&#39;ve enabled more verbose logging of the clustering subsystem, so we can watch what
+happens.  The output of this command will ultimately appear similar to:</p>
+<pre><code>Starting clustering...
+No cluster-host specified so using address 172.16.49.1
+null [dev] [3.2.3] Interfaces is enabled, trying to pick one address matching to one of: [10.0.1.*]
+null [dev] [3.2.3] Prefer IPv4 stack is true.
+null [dev] [3.2.3] Picked Address[10.0.1.25]:5701, using socket ServerSocket[addr=/0:0:0:0:0:0:0:0,localport=5701], bind any local is true
+[10.0.1.25]:5701 [dev] [3.2.3] Hazelcast Community Edition 3.2.3 (20140617) starting at Address[10.0.1.25]:5701
+[10.0.1.25]:5701 [dev] [3.2.3] Copyright (C) 2008-2014 Hazelcast.com
+[10.0.1.25]:5701 [dev] [3.2.3] Creating MulticastJoiner
+[10.0.1.25]:5701 [dev] [3.2.3] Address[10.0.1.25]:5701 is STARTING
+[10.0.1.25]:5701 [dev] [3.2.3]
+
+
+Members [1] {
+    Member [10.0.1.25]:5701 this
+}
+
+[10.0.1.25]:5701 [dev] [3.2.3] Address[10.0.1.25]:5701 is STARTED
+Server listening on port 9000
+Succeeded in deploying module</code></pre>
+<p>We notice that initially, we have one process running, forming a cluster of one node.  That&#39;s not super exciting.</p>
+<h2>Run <code>tacos-kitchen.js</code> as a plain Vert.x verticle</h2>
+<p>Running the <code>tacos-kitchen.js</code> component is about the same, except we don&#39;t 
+have to pass any configuration in, and we use the <code>run</code> command instead of the
+<code>runmod</code> command, to run the file as specified on the commandline.</p>
+<pre><code>$ vertx run tacos-kitchen.js -cluster</code></pre>
+<p>Once again, the output should look akin to this:</p>
+<pre><code>Starting clustering...
+No cluster-host specified so using address 10.10.57.51
+null [dev] [3.2.3] Interfaces is enabled, trying to pick one address matching to one of: [10.0.1.*]
+null [dev] [3.2.3] Prefer IPv4 stack is true.
+null [dev] [3.2.3] Picked Address[10.0.1.25]:5702, using socket ServerSocket[addr=/0:0:0:0:0:0:0:0,localport=5702], bind any local is true
+[10.0.1.25]:5702 [dev] [3.2.3] Hazelcast Community Edition 3.2.3 (20140617) starting at Address[10.0.1.25]:5702
+[10.0.1.25]:5702 [dev] [3.2.3] Copyright (C) 2008-2014 Hazelcast.com
+[10.0.1.25]:5702 [dev] [3.2.3] Creating MulticastJoiner
+[10.0.1.25]:5702 [dev] [3.2.3] Address[10.0.1.25]:5702 is STARTING
+[10.0.1.25]:5702 [dev] [3.2.3] Connecting to /10.0.1.25:5701, timeout: 0, bind-any: true
+[10.0.1.25]:5702 [dev] [3.2.3] 60247 accepted socket connection from /10.0.1.25:5701
+[10.0.1.25]:5702 [dev] [3.2.3]
+
+Members [2] {
+    Member [10.0.1.25]:5701
+    Member [10.0.1.25]:5702 this
+}
+
+[10.0.1.25]:5702 [dev] [3.2.3] Address[10.0.1.25]:5702 is STARTED
+loaded the kitchen!
+Succeeded in deploying verticle</code></pre>
+<p>Here, we see that this second Vert.x process has successfully found and clustered with
+the first one we launched (<code>tacos-web.js</code>).</p>
+<h1>Order some tacos!</h1>
+<p>Now, as before, we point our browser to</p>
+<pre><code>http://localhost:9000/57</code></pre>
+<p>and order 57 tacos.</p>
+<p>The browser displays</p>
+<pre><code>57 tacos will be ready in 11.4 minutes</code></pre>
+<p>While the <code>tacos-kitchen.js</code> console displays</p>
+<pre><code>KITCHEN: Someone ordered 57 tacos</code></pre>
+<h1>Summary</h1>
+<p>Here, we&#39;ve deployed a Node.js application, which uses Vert.x eventbus functionality in one
+instance of Vert.x.  We&#39;ve deployed a plain ol&#39; Vert.x component (a verticle) in another,
+distinct Vert.x process.  The pair of Vert.x processes have found each other, embraced each
+other, and formed a cluster.  We&#39;ve communicated between them, asynchronously.</p>
+<p>Isn&#39;t that awesome?</p>
+<h1>Notes</h1>
+<ul>
+<li><code>mod-nodyn</code> lives in <a href="https://github.com/nodyn/mod-nodyn">GitHub</a>. If you&#39;d like to follow along at home,
+check it out, and build it with <code>mvn install</code>.</li>
+</ul>
+]]></description><pubDate>Thu Aug 21 2014 00:00:00 GMT-0400 (EDT)</pubDate><link>http://nodyn.io/posts/nodejs-inside-vertx</link><guid isPermaLink="true">http://nodyn.io/posts/nodejs-inside-vertx</guid></item><item><title>Vert.x with Nodyn</title><description><![CDATA[<h1>Nodyn and Vert.x?</h1>
+<p><a href="http://nodyn.io/posts/welcome-to-nodyn">Yesterday</a>, we pointed out that Nodyn uses <a href="http://vertx.io/">Vert.x</a> under the covers to 
+power our event-loop (replacing the <a href="https://github.com/joyent/libuv">libuv</a> event-loop in Node.js).  Additionally,
+Nodyn has an NPM module that can make bits of Vert.x directly usable
+by your Node.js applications.</p>
+<!-- more -->
+
+<p>One of the key components of Vert.x, which does not exist in the Node.js
+APIs, is the <a href="http://vertx.io/core_manual_js.html#the-event-bus">eventbus</a>.  The eventbus allows you to register handlers
+for specific addresses, and have them receive messages and perform work.</p>
+<p>Optionally, these handlers can <em>reply</em> back to the original sender.</p>
+<p>All of this occurs asynchronously, of course, and allows you to create
+complex topologies of components that communicate purely through
+message-passing.</p>
+<h1>The <code>vertx2-core</code> NPM module</h1>
+<p>Currently in <a href="https://github.com/nodyn/vertx2-core/">GitHub</a>, the <code>vertx2-core</code> NPM module takes the internal
+Vert.x, and makes it available to your application.</p>
+<pre><code>var vertx = require(&#39;vertx2-core&#39;)</code></pre>
+<p>From there, you can access the <code>eventbus</code> and interact with it
+as both a producer and a consumer.</p>
+<pre><code>var registration = vertx.eventbus.register( &#39;some.address&#39;, function(msg) {
+  // handle incoming messages here
+} );
+
+vertx.eventbus.send( &#39;some.address&#39;, ... );</code></pre>
+<p>While the native Vert.x API is a &quot;fluent&quot; API, where <code>register()</code> returns the
+eventbus back to you, for Node.js semantics, the <code>register()</code> method returns
+a <code>HandlerRegistration</code> object.  This object provides access to the typical
+<code>ref()</code> and <code>unref()</code> methods, to control if registration keeps the event-loop
+alive or not.</p>
+<p>Additionally, the <code>HandlerRegistration</code> object provides a handy <code>unregister()</code>
+method to easily unregister (and therefor <code>unref()</code>) the handler.  If at a later
+point in time you wish to re-register, you can use the same object and simply
+call <code>register()</code>.</p>
+<p>The reason we need the <code>ref()</code> and <code>unref()</code> functionality is due to the fact
+that it&#39;s possible to write a script that does nothing but sets up a an
+eventbus listener. Without the ref-counting, the script would complete after
+registering the listener, the event-loop would think it has nothing left to do,
+and the process would exit.  That&#39;s not good. With the <code>ref()</code> and <code>unref()</code>
+methods, you can explicitly control if the eventbus handler counts towards
+the active task-list, keeping the event-loop alive. This becomes more important
+when you have a cluster of Vert.x processes running cooperatively and possibly
+have scripts that do nothing other than wait for the event-bus to deliver
+some messages.</p>
+<h1>Interoperability</h1>
+<p>Vert.x itself is both polyglot and a standalone platform which can cluster many
+nodes of itself, allowing the event-bus to span many processes.  With a complex
+mesh of eventbus listeners distributed across possibly many physical machines,
+the load can be distributed and your application can scale as needed.</p>
+<p>The <code>vertx2-core</code> NPM module, along with the eventbus binding, provides interoperability
+with other Vert.x nodes and handlers.  These other nodes could be running inside of
+Nodyn, or simpy as standalone Vert.x instances.  If running as standalone Vert.x instances,
+the handlers could be written in any language Vert.x supports, including Clojure, Groovy
+and Java.</p>
+<h1>Everyone Loves Tacos</h1>
+<p>And now, some example code, demonstrating a Taco Server, which allows a person to
+place an order for some amount of tacos through the web, and receive a response
+as to how long he or she will have to wait to have their glorious tacos delivered.</p>
+<p>The basic architecture is this:</p>
+<ul>
+<li>The taco <em>kitchen</em> sets up a Vert.x eventbus listener on the address of <code>kitchen</code>.
+This listener waits for messages that contain an <code>amount</code> field, and calculates
+how long it will take to produce that number of tacos, and then replies with
+its answer. It also prints to the console when it receives a message.</li>
+<li>A regular Node HTTP server is created on port 9000.</li>
+<li>The Node HTTP request-handler sends a message on the Vert.x eventbus to the
+<code>kitchen</code> address, and provides another handler to accept the asynchronous
+reply from the kitchen.</li>
+<li>When the reply is received from the kitchen, the request-handler uses that
+information to provide a response to the originating web client, on port 9000.</li>
+</ul>
+<pre><code>var http = require(&#39;http&#39;);
+var vertx = require(&#39;vertx2-core&#39;);
+
+var registration = vertx.eventbus.register( &#39;kitchen&#39;, function(message) {
+  console.log( &#39;KITCHEN: Someone ordered &#39; + message.body.amount + &#39; tacos&#39; );
+  message.reply( { wait_time: message.body.amount * 0.2 } );
+});
+
+var server = http.createServer( function(request, response) {
+  var url = request.url;
+  var parts = url.split( &#39;/&#39; );
+  var amount = parts[1];
+
+  vertx.eventbus.send( &#39;kitchen&#39;, { amount: amount } , function(message) {
+    response.write( amount + &#39; tacos will be ready in &#39; + message.body.wait_time + &#39; minutes&#39; );
+    response.end();
+  } );
+} );
+
+server.listen( 9000, function() {
+  console.log( &quot;Server listening on port 9000&quot; );
+} );</code></pre>
+<p>By launching this app via <code>nodyn taco_kitchen.js</code>, you will ultimately see on the console:</p>
+<pre><code>Server listening on port 9000</code></pre>
+<p>Using our favorite web-browser, we surf to URLs such as this, to order 102 tacos (we <em>love</em> tacos):</p>
+<pre><code>http://localhost:9000/102</code></pre>
+<p>In our browser, we see:</p>
+<pre><code>102 tacos will be ready in 20.400000000000002 minutes</code></pre>
+<p>Additionally in our server-side console, we see:</p>
+<pre><code>KITCHEN: Someone ordered 102 tacos</code></pre>
+<h1>Wrapping Up</h1>
+<p>Vert.x is one of the reasons running Node.js on the JVM using Nodyn makes sense. The Vert.x
+eventbus allows for the creation of components scattered across a network of machines, and 
+have them all serve a common application.  Since the eventbus is asynchronous, it perfectly
+matches the Node.js APIs and semantics for responding to things such as web requests.</p>
+<p>In Nodyn, we still have some practical work to do in order to faciliate clustering of the
+Vert.x inside of a Nodyn process with an existing out-of-process Vert.x grid, but that&#39;s 
+coming down the pipeline.</p>
+]]></description><pubDate>Wed Aug 20 2014 00:00:00 GMT-0400 (EDT)</pubDate><link>http://nodyn.io/posts/vertx-with-nodyn</link><guid isPermaLink="true">http://nodyn.io/posts/vertx-with-nodyn</guid></item><item><title>Welcome to Nodyn</title><description><![CDATA[<h1>Who, What, How?</h1>
+<p><a href="http://nodyn.io/">Nodyn</a> is <a href="http://redhat.com/">Red Hat</a>&#39;s implementation of <a href="http://nodejs.org/">Node.js</a> on top of the Java Virtual Machine.
+Currently Nodyn is tracking the 0.12 release of Node.js. The project is lead by
+<a href="http://twitter.com/lanceball">Lance Ball</a> with <a href="http://twitter.com/bobmcwhirter">Bob McWhirter</a> pitching in.</p>
+<p>Lance and Bob are part of the team responsible for <a href="http://torquebox.org/">TorqueBox</a>, and are familiar
+with taking languages and frameworks that don&#39;t run on the Java Virtual Machine
+already, and making them run on the JVM.</p>
+<!-- more -->
+
+<p>The foundations of Nodyn include <a href="http://dynjs.org/">DynJS</a>, <a href="http://netty.io/">Netty</a>, and <a href="http://vertx.io/">Vertx</a>.  Initially Nodyn was
+conceived as a clean-room implemention of the public-facing APIs exposed by
+Node.js, but this route turned out to be problematic for a few reasons:</p>
+<ul>
+<li>The public-facing APIs were not always very well-documented.</li>
+<li>Various NPM modules would use un-documented APIs.</li>
+</ul>
+<p>Re-evaluating the Node.js codebase, and spending some weekends reading the
+Javascript and C++ code with a cold glass of beer, the team figured out how
+to re-use the existing actual Javascript code from Node.js, and simply replace
+the C++ bits.  In a fortunate twist, the C++ bits are replaced with some Java
+and some Javascript.  Nodyn, arguably, is implemented more in Javascript than
+Node.js is.  This is possible due to the Java integration facilities of DynJS.</p>
+<p>Given this new strategy, the public-facing APIs provided by Node.js, as
+implemented in the various .js files in their <code>lib/</code> directory, are also
+exactly the same in Nodyn.  Also, it turns out that the API surface defined 
+by the various <code>process.binding(...)</code> objects is significantly smaller than
+the public-facing APIs, reducing the amount of work required by the Nodyn team.</p>
+<p>For instance, in a clean-room implementation, all of <code>http.js</code> would need to be
+implemented, from scratch.  By building upon actual Node.js sources, the
+<code>http.js</code> module requires only an <code>HTTPParser</code> implementation, and builds itself
+on top of the <code>net.js</code> module.</p>
+<p>Some of the Node.js APIs, particular <code>child_process</code> and much of <code>fs</code> rely upon
+facilities not present in the JVM. Nodyn leverages the jnr-posix library (the
+same library used by JRuby) to provide capabilities for working with integer-based
+file-descriptors, and sending these file-descriptors to forked child processes.</p>
+<h1>But WHY?</h1>
+<p>While we&#39;ve answered the <em>Who</em>, the <em>What</em> and the <em>How</em>, we should still address
+the <em>Why</em> of Nodyn.  Node.js is, on the outside, a single-threaded framework. Java
+can handle threads without a problem.  But Java can still perform better with reactive,
+asynchronous frameworks.  Just because Java <em>can</em> use threads like magic, each thread 
+does still have a certain amount of overhead (stack space, context-switching, etc),
+so if we can avoid using them, that&#39;s great!  </p>
+<p>Additionally, just as Node.js likes to say &quot;Node.js is multi-threaded everywhere,
+except <em>your</em> code&quot;, Nodyn follows the same route. There are lots of threads inside
+of Nodyn, but only a single thread ever executes your code.</p>
+<p>That <em>is</em> great, but it doesn&#39;t doesn&#39;t answer the question, does it?</p>
+<p>The JVM has a <em>lot</em> going for it. There&#39;s a ton of libraries existing for it. There&#39;s
+tons of enterprises that are already familiar with running JVM-based stacks in their
+data-centers.  And these guys would like to board the hype train of Node.js.  Nodyn allows
+that.</p>
+<p>Additionally, while it&#39;s convenient to run multiple Node.js processes to use many processors,
+Nodyn will soon provide the ability to run multiple Node.js &quot;processes&quot; within a single
+JVM process.  Nodyn has been constructed, from the ground up, without any shared global 
+state or variables. It is super-simple to embed many completely separate Node.js runtimes
+inside the JVM using Nodyn.</p>
+<h1>What&#39;s left?</h1>
+<p>Lots!</p>
+<p>We still need to figure out how Nodyn lives within the large Node.js community and
+ecosystem. Specifically, it&#39;d be great to be able to have JVM-flavored NPM modules,
+possible as alternative to C++-based modules.</p>
+<p>The Ruby world saw this transition, with the support of <code>-java</code> gems being added
+to the RubyGems packaging system.  A single named gem may have both a C-based version
+or a Java-based version.</p>
+<p>Additionally, there are still parts of the Node.js core APIs that we haven&#39;t necessarily
+implemented.  <a href="http://github.com/nodyn/nodyn">Feel free to pitch in</a>!</p>
+]]></description><pubDate>Tue Aug 19 2014 00:00:00 GMT-0400 (EDT)</pubDate><link>http://nodyn.io/posts/welcome-to-nodyn</link><guid isPermaLink="true">http://nodyn.io/posts/welcome-to-nodyn</guid></item></channel></rss>

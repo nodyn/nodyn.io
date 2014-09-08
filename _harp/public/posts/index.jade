@@ -1,0 +1,17 @@
+
+- function excerpt(content) {
+  - if(content.indexOf("<!-- more -->") == -1) return content;
+  - else return content.split("<!-- more -->")[0];
+- }
+
+.posts-index
+  for post, slug in public.posts._data
+    if ( slug != 'index' && slug != 'feed' )
+      h1: a(href="/posts/#{ slug }")= post.title
+      h2:= post.date
+      .post-excerpt
+        != excerpt(partial(slug))
+      .read-more
+        a(href="/posts/#{ slug }") Read more...
+
+  

@@ -1,0 +1,42 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><title> Node.js API for the JVM</title><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" type="text/css" href="/stylesheets/styles.css"><link rel="stylesheet" type="text/css" href="/javascripts/highlight/styles/github.css"><script src="/javascripts/highlight/highlight.pack.js"></script><script>hljs.initHighlightingOnLoad();</script><link rel="icon" type="image/x-icon" href="/favicon.ico"><!-- [if lt IE 9]<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script><script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>--><script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script></head><body><a href="https://github.com/nodyn/nodyn"><img style="position: absolute; top: 50px; right: 0; border: 0; z-index:50" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a><div role="navigation" class="navbar navbar-default"><div class="container-fluid"><div class="navbar-header"><button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="/" class="navbar-brand">Nodyn</a></div><div class="navbar-collapse collapse"><ul class="nav navbar-nav"><li><a href="/posts">Blog</a></li><li><a href="http://github.com/nodyn/nodyn/issues">Issues</a></li><li><a href="http://github.com/nodyn/nodyn/wiki">Wiki</a></li><li><a href="/compatibility">API Compatibility</a></li><li><a href="http://travis-ci.org/nodyn/nodyn"><img src="https://secure.travis-ci.org/nodyn/nodyn.png" alt="Travis-CI Build Status"></a></li></ul></div></div></div><div class="container"><div class="row"><div class="col-md-8"><div class="post"><div class="meta"><h1>Node.js API for the JVM</h1><h2></h2><h3></h3></div><div class="content"><div class="posts-index"><h1><a href="/posts/talk-to-us">Talk to Us</a></h1><h2>4 September 2014</h2><div class="post-excerpt"><h1>Talk to Us</h1>
+<p>As much as I love IRC for developer communication, it&#39;s easy to miss conversations,
+requests, bug reports, etc. And now that we&#39;re ready to start talking about Nodyn
+a bit more publicly, we really need to fill the communication gap. So, I have created
+a <a href="https://groups.google.com/forum/#!forum/nodyn">Google Group</a> to fill some of
+these holes.</p>
+</div><div class="read-more"><a href="/posts/talk-to-us">Read more...</a></div><h1><a href="/posts/2014-roadmap">Nodyn Roadmap</a></h1><h2>22 August, 2014</h2><div class="post-excerpt"><h1>Nodyn Roadmap</h1>
+<p>Since we switched strategies and have begun focusing almost exclusively on
+the <code>process.binding</code> integration that the Node.js Javascript depends on, we
+have made great strides and major headway towards full API compatibility. This
+approach was <a href="/posts/welcome-to-nodyn">discussed briefly</a> by Bob McWhirter in
+our inaugural post. The details of this change are worthy of more explanation,
+but I will save that for another day, and just examine what this change means
+for the overall plans through the rest of this year.</p>
+</div><div class="read-more"><a href="/posts/2014-roadmap">Read more...</a></div><h1><a href="/posts/nodejs-inside-vertx">Node.js inside Vert.x</a></h1><h2>21 August, 2014</h2><div class="post-excerpt"><h1>Strike that. Reverse it. Node.js (Nodyn) inside Vert.x</h1>
+<p><a href="http://nodyn.io/posts/vertx-with-nodyn">Yesterday</a> we talked about how to gain access to <a href="http://vertx.io/">Vert.x</a> functionality
+within your Node.js scripts run by Nodyn.  Today we&#39;re going to invert
+that idea, and show you how you can take existing Node.js workloads,
+run them inside of Vert.x (including on a cluster) and integrate
+them with existing <em>pure</em> Vert.x components you might already have.</p>
+</div><div class="read-more"><a href="/posts/nodejs-inside-vertx">Read more...</a></div><h1><a href="/posts/vertx-with-nodyn">Vert.x with Nodyn</a></h1><h2>20 August, 2014</h2><div class="post-excerpt"><h1>Nodyn and Vert.x?</h1>
+<p><a href="http://nodyn.io/posts/welcome-to-nodyn">Yesterday</a>, we pointed out that Nodyn uses <a href="http://vertx.io/">Vert.x</a> under the covers to 
+power our event-loop (replacing the <a href="https://github.com/joyent/libuv">libuv</a> event-loop in Node.js).  Additionally,
+Nodyn has an NPM module that can make bits of Vert.x directly usable
+by your Node.js applications.</p>
+</div><div class="read-more"><a href="/posts/vertx-with-nodyn">Read more...</a></div><h1><a href="/posts/welcome-to-nodyn">Welcome to Nodyn</a></h1><h2>19 August, 2014</h2><div class="post-excerpt"><h1>Who, What, How?</h1>
+<p><a href="http://nodyn.io/">Nodyn</a> is <a href="http://redhat.com/">Red Hat</a>&#39;s implementation of <a href="http://nodejs.org/">Node.js</a> on top of the Java Virtual Machine.
+Currently Nodyn is tracking the 0.12 release of Node.js. The project is lead by
+<a href="http://twitter.com/lanceball">Lance Ball</a> with <a href="http://twitter.com/bobmcwhirter">Bob McWhirter</a> pitching in.</p>
+<p>Lance and Bob are part of the team responsible for <a href="http://torquebox.org/">TorqueBox</a>, and are familiar
+with taking languages and frameworks that don&#39;t run on the Java Virtual Machine
+already, and making them run on the JVM.</p>
+</div><div class="read-more"><a href="/posts/welcome-to-nodyn">Read more...</a></div></div></div></div></div><div class="col-sm-3 col-sm-offset-1 blog-sidebar"><div class="sidebar-module sidebar-module-inset"><h4>About Nodyn</h4><div class="description">Nodyn is a Node.js compatible framework, running on
+the JVM powered by the DynJS Javascript runtime.
+This is our blog.
+</div></div><div class="sidebar-module archives"><h4>Archives</h4><ul><li><a href="/posts/talk-to-us">Talk to Us<div class="smaller"> 4 September 2014</div></a></li><li><a href="/posts/2014-roadmap">Nodyn Roadmap<div class="smaller"> 22 August, 2014</div></a></li><li><a href="/posts/nodejs-inside-vertx">Node.js inside Vert.x<div class="smaller"> 21 August, 2014</div></a></li><li><a href="/posts/vertx-with-nodyn">Vert.x with Nodyn<div class="smaller"> 20 August, 2014</div></a></li><li><a href="/posts/welcome-to-nodyn">Welcome to Nodyn<div class="smaller"> 19 August, 2014</div></a></li><li><a href="/posts/feed"><div class="smaller"> </div></a></li></ul></div></div></div></div><div class="container"><footer class="well">&copy; Red Hat, Inc. 2013-2014</footer></div><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-40480843-1', 'nodyn.io');
+ga('send', 'pageview');</script></body></html>
