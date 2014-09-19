@@ -78,7 +78,7 @@ html
               for post, slug in public.posts._data
                 if ( slug != 'index' )
                   li
-                    a(href="/posts/#{ slug }")
+                    a(href="/posts/#{ slug }.html")
                       = post.title 
                       .smaller 
                         = post.date
